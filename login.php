@@ -11,7 +11,7 @@
 
    <div class="callout">
       <h5>Login</h5>
-      <form action="<?php echo $APPLICATION_PATH; ?>/authorisation.php" method="POST">
+      <form action="<?php echo $APPLICATION_PATH; ?>authorisation.php" method="POST">
          <label for="email">Email</label>
          <input type="text" name="email" id="email">
          <label for="password">Password</label>

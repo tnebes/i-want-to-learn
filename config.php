@@ -4,7 +4,7 @@
 
    session_start();
 
-   $APPLICATION_TITLE = 'I Want To Learn APP';
+   $APPLICATION_TITLE = 'I Want To Learn';
    $APPLICATION_PATH = 'http://iwtl.com/';
 
    $users =

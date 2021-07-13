@@ -15,12 +15,12 @@
           <li><a href="#0">Users</a></li>
         </ul>
       </li>
-      <?php if(!isAuthorised()): ?>)
-      <li><a href="#0">Login</a></li>
+      <?php if(!isAuthorised()): ?>
+      <li><a href="<?php echo $APPLICATION_PATH ?>login.php">Login</a></li>
       <?php else:?>
       <li><a href="#0">Options</a></li>
       <li><a href="#0">Control panel</a></li>
-      <li><a href="#0">Logout</a></li>
+      <li><a href="<?php echo $APPLICATION_PATH ?>logout.php">Logout</a></li>
       <?php endif;?>
     </ul>
   </div>
