@@ -9,6 +9,7 @@
 <body>
    <?php require_once 'templates/header.php'?>
    Hello!
+   <?php require_once 'templates/footer.php'?>
    <?php require_once 'templates/javascript.php'; ?>
 </body>
 </html>
