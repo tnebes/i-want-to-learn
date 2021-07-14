@@ -10,18 +10,18 @@
       <li class="has-submenu">
         <a href="#0">Content</a>
         <ul class="submenu menu vertical" data-submenu>
-          <li><a href="#0">Topics</a></li>
+          <li><a href="<?php echo $APPLICATION_PATH ?>topic.php">Topics</a></li>
           <li><a href="#0">Suggestions</a></li>
           <li><a href="#0">Users</a></li>
         </ul>
       </li>
-      <?php if(!isAuthorised()): ?>
+      <? if(!isAuthorised()): ?>
       <li><a href="<?php echo $APPLICATION_PATH ?>login.php">Login</a></li>
-      <?php else:?>
+      <? else:?>
       <li><a href="#0">Options</a></li>
       <li><a href="#0">Control panel</a></li>
       <li><a href="<?php echo $APPLICATION_PATH ?>logout.php">Logout</a></li>
-      <?php endif;?>
+      <? endif;?>
     </ul>
   </div>
   <div class="top-bar-right">

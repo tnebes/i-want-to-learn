@@ -13,6 +13,7 @@
 
    function checkEmailPassword(string $email, string $password) : int
    {
+      // PHP nije lijep - T. Jakopec, 2021.
       global $users; // TODO: stop using this!!! -- use a parameter!!! this is terrible
       foreach ($users as $DBemail => $DBpassword)
       {
