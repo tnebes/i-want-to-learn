@@ -4,11 +4,6 @@
 
    function isAuthorised() : bool
    {
-      if (session_id() === '')
-      {
-         session_start();
-      }   
-
       if (isset($_SESSION['authorised']))
       {
          return true;
@@ -18,7 +13,7 @@
 
    function checkEmailPassword(string $email, string $password) : int
    {
-      global $users;
+      global $users; // TODO: stop using this!!! -- use a parameter!!! this is terrible
       foreach ($users as $DBemail => $DBpassword)
       {
          if ($DBemail == $email && $DBpassword == $password)
@@ -31,10 +26,6 @@
 
    function setAuthorised(string $email) : int
    {
-      if (session_id() === '')
-      {
-         session_start();
-      }   
       $_SESSION['authorised'] = $email;
       return 0;
    }

@@ -1,5 +1,7 @@
 <?php declare(strict_types = 1);
 
+   // TODO: single entry point
+
    require_once 'functions.php';
 
    session_start();
