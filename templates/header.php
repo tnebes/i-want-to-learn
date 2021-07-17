@@ -6,7 +6,7 @@
 <div class="top-bar" id="example-menu">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">IWTL</li>
+      <li class="menu-text"><a href="<?php echo $APPLICATION_PATH?>index.php">IWTL</a></li>
       <li class="has-submenu">
         <a href="#0">Content</a>
         <ul class="submenu menu vertical" data-submenu>
@@ -19,7 +19,9 @@
       <li><a href="<?php echo $APPLICATION_PATH ?>login.php">Login</a></li>
       <? else:?>
       <li><a href="#0">Options</a></li>
-      <li><a href="#0">Control panel</a></li>
+      <!-- add a link to the user's profile -->
+      <li><a href="<?php echo $APPLICATION_PATH ?>user/user.php">My Profile</a></li>
+      <li><a href="<?php echo $APPLICATION_PATH ?>adminPanel/adminPanel.php">Control panel</a></li>
       <li><a href="<?php echo $APPLICATION_PATH ?>logout.php">Logout</a></li>
       <? endif;?>
     </ul>

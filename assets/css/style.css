@@ -1,0 +1,26 @@
+
+/*TODO: using <a> in the menu-text breaks the layout. This needs to be fixed. */
+.menu-text > a:nth-child(1)
+{
+   color: #149e02;
+   /* Make the element fit within the div */
+   width: 100%;
+}
+
+/* The background image does not appear. TODO: this needs to be fixed. */
+.menu-text
+{
+   background: url("./assets/images/logo.png") no-repeat center center;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;
+   /* Make the element fit within the div */
+   width: 100%;
+}
+
+.tabs-panel.is-active > p:nth-child(1)
+{
+   font-weight: bold;
+   font-size: 1.2em;
+}
+
