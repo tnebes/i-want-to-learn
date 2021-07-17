@@ -20,7 +20,7 @@
       <? else:?>
       <li><a href="#0">Options</a></li>
       <!-- add a link to the user's profile -->
-      <li><a href="<?php echo $APPLICATION_PATH ?>user/user.php">My Profile</a></li>
+      <li><a href="<?php echo $APPLICATION_PATH ?>myProfile/myProfile.php">My Profile</a></li>
       <li><a href="<?php echo $APPLICATION_PATH ?>adminPanel/adminPanel.php">Control panel</a></li>
       <li><a href="<?php echo $APPLICATION_PATH ?>logout.php">Logout</a></li>
       <? endif;?>

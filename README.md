@@ -1,34 +1,37 @@
 # i-want-to-learn
 A web application for collecting information on how to learn anything.
 
-# Requirements (Croatian)
+# description
 
-- [] Za razvoj aplikacije se koristi Foundation RWD framework
 
-- [] Aplikacija mora imati javni i privatni dio
+## Requirements (Croatian)
 
-- [] Aplikacija mora biti prilagodljiva minimalno dvoje različitim širinama zalona (RWD) - sadržaj mora biti čitljiv, vidljiv, dobro organiziran za obje širine zaslona
+- [x] Za razvoj aplikacije se koristi Foundation RWD framework
 
-- [] Autorizacija se izvršava na osnovu podataka u php datoteci
+- [x] Aplikacija mora imati javni i privatni dio
 
-- [] Na stranici autorizacije postaviti minimalno 2 korisnika i lozinke za spajanje
+- [ ] Aplikacija mora biti prilagodljiva minimalno dvoje različitim širinama zalona (RWD) - sadržaj mora biti čitljiv, vidljiv, dobro organiziran za obje širine zaslona
 
-- [] Privatni dio mora omogućiti CRUD - unos, čitanje, promjenu i brisanje svih podataka na jedan entitet Vašeg završnog rada koja nije vezana u nekim drugim tablicama vanjskim ključem. Podaci se pohranjuju u Session.
+- [ ] Autorizacija se izvršava na osnovu podataka u php datoteci
 
-- [] Postaviti na hosting aplikaciju
+- [ ] Na stranici autorizacije postaviti minimalno 2 korisnika i lozinke za spajanje
 
-- [] Postaviti na github kod
+- [ ] Privatni dio mora omogućiti CRUD - unos, čitanje, promjenu i brisanje svih podataka na jedan entitet Vašeg završnog rada koja nije vezana u nekim drugim tablicama vanjskim ključem. Podaci se pohranjuju u Session.
 
-- [] U readme.md napisati koje su točke realizirane
+- [x] Postaviti na hosting aplikaciju
 
-- [] Na javnom dijelu aplikacije postaviti link na github kod
+- [x] Postaviti na github kod
 
-- [] Na privatnom dijelu aplikacije staviti link na ERA dijagram
+- [x] U readme.md napisati koje su točke realizirane
 
-- [] Aplikacija ima metapodatke prema http://ogp.me/
+- [ ] Na javnom dijelu aplikacije postaviti link na github kod
 
-- [] Aplikacija ima favicon-e kreirane pomoću http://www.favicon-generator.org/
+- [ ] Na privatnom dijelu aplikacije staviti link na ERA dijagram
 
-- [] Za unos i promjenu u session potrebno je napraviti kontrole svih unesenih podataka
+- [ ] Aplikacija ima metapodatke prema http://ogp.me/
+
+- [ ] Aplikacija ima favicon-e kreirane pomoću http://www.favicon-generator.org/
+
+- [ ] Za unos i promjenu u session potrebno je napraviti kontrole svih unesenih podataka
 
 

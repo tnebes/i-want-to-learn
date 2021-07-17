@@ -30,3 +30,8 @@
       $_SESSION['authorised'] = $email;
       return 0;
    }
+
+   function printError(string $errorMessage) : void
+   {
+      echo '<div class="warning label">' . $errorMessage . '</div>';
+   }

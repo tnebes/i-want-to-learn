@@ -22,11 +22,7 @@
    <div class="tabs-panel is-active" id="panel1">
       <p>Users</p>
       <p>Use this tab to create, modify, ban or delete users.</p>
-      <?php
-      // retrieve users from session
-      
-   
-      ?>
+      <?php require_once '../view/userView.php' ?>
 
    </div>
    <div class="tabs-panel" id="panel2">
