@@ -9,7 +9,9 @@
       private $password;
       private $registrationDate;
       private $active;
+      private $role;
       private $lastLogin;
+      private $banned;
 
       // getters and setters
       public function getId(): int
@@ -67,6 +69,26 @@
       public function setLastLogin(DateTime $lastLogin): void
       {
          $this->lastLogin = $lastLogin;
+      }
+      public function getRole()
+      {
+            return $this->role;
+      }
+      public function setRole($role)
+      {
+            $this->role = $role;
+
+            return $this;
+      }
+      public function isBanned()
+      {
+            return $this->banned;
+      }
+      public function setBanned($banned)
+      {
+            $this->banned = $banned;
+
+            return $this;
       }
    }
 

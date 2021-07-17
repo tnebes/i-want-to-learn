@@ -18,9 +18,28 @@
    width: 100%;
 }
 
+.add-user-form
+{
+   width: 50%;
+   margin: 0 auto;
+   padding: 0.5em 1em;
+   background: #FFF;
+   border: 1px solid #E4E4E4;
+   border-radius: 3px;
+   box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
 .tabs-panel.is-active > p:nth-child(1)
 {
    font-weight: bold;
    font-size: 1.2em;
+}
+
+/* Warning label appears on the top left corner of the callout div */
+.tabs-panel.is-active > .callout > .warning.label
+{
+   left: 0;
+   top: 0;
+   position: absolute;
 }
 
