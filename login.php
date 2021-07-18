@@ -13,9 +13,10 @@
       <h5>Login</h5>
       <form action="<?php echo $APPLICATION_PATH; ?>authorisation.php" method="POST">
          <label for="email">Email</label>
-         <input type="text" name="email" id="email">
+         <!-- TODO: email and password must be removed when released -->
+         <input type="text" name="email" id="email" value="oper@edunova.hr">
          <label for="password">Password</label>
-         <input type="password" name="password" id="password">
+         <input type="password" name="password" id="password" value="o"> 
          <input type="submit" value="login">
          <a href="#">Forgot your password?</a>
       </form>
