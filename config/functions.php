@@ -35,3 +35,9 @@
    {
       echo '<div class="warning label">' . $errorMessage . '</div>';
    }
+
+   // function sends a string to javascript for console.log
+   function printLog($logMessage)
+   {
+      echo '<script>console.log("' . var_dump($logMessage) . '");</script>';
+   }

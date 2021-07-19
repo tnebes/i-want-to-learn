@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-   require_once '../config.php';
+   require_once '../config/config.php';
 
    $_SESSION['myTestData'] = [];
    for ($i = 0; $i < 10; $i++)

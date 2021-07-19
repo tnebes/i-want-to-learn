@@ -12,4 +12,7 @@
       <input type="password" name="password" id="password" class="input">
    </div>
    <button type="submit" class="button is-primary">Add User</button>
+   <!-- TODO: check if this is a good idea? -->
+   <!-- send user's current location as a hidden variable -->
+   <input type="hidden" name="location" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
 </form>

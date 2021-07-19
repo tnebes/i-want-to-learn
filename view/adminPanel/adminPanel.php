@@ -1,14 +1,13 @@
 <?php declare(strict_types = 1);
-   require_once '../config.php';
-
+   require_once '../../config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <?php require_once '../templates/head.php'?>
+   <?php require_once '../../templates/head.php'?>
 </head>
 <body>
-   <?php require_once '../templates/header.php'?>
+   <?php require_once '../../templates/header.php'?>
 
    <ul class="tabs" data-tabs id="example-tabs">
    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Users</a></li>
@@ -23,9 +22,9 @@
       <p>Users</p>
       <p>Use this tab to create, modify, ban or delete users.</p>
       <div class="callout">
-         <?php require_once '../view/userView.php' ?>
+         <?php require_once '../../view/userView.php' ?>
          <hr />
-         <?php require_once '../view/addUserPanel.php' ?>
+         <?php require_once '../../view/addUserPanel.php' ?>
       </div>
 
    </div>
@@ -46,7 +45,7 @@
       <p>Check me out! I'm a super cool Tab panel with text content!</p>
    </div>
 
-   <?php require_once '../templates/footer.php'?>
-   <?php require_once '../templates/javascript.php'; ?>
+   <?php require_once '../../templates/footer.php'?>
+   <?php require_once '../../templates/javascript.php'; ?>
 </body>
 </html>

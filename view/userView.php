@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-   require_once '../functions.php';
+   require_once '../../config/functions.php';
 
    function createUserTable(array $users) : void
    {

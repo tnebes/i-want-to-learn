@@ -1,5 +1,5 @@
 <?php declare(strict_types = 1);
-   require_once '../config.php';
+   require_once '../config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +8,10 @@
 </head>
 <body>
    <?php require_once '../templates/header.php'?>
-   <? foreach ($_SESSION['myTestData'] as $value)
-   {
-      echo $value;
-      echo '<br>';
-   }
-   ?>
+   <div class="callout alert">
+      <h4>Under Construction</h4>
+      <p>This page is under construction. It will be back soon.</p>
+   </div>
    <?php require_once '../templates/footer.php'?>
    <?php require_once '../templates/javascript.php'; ?>
 </body>
