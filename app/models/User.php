@@ -1,10 +1,9 @@
 <?php declare(strict_types = 1);
 
-   require_once '../config/config.php';
-
    class User
    {
       // Attributes
+      private $db;
       private $id;
       private $username;
       private $email;
@@ -14,6 +13,19 @@
       private $role;
       private $lastLogin;
       private $banned;
+
+      // Constructor
+      public function __construct()
+      {
+         $this->db = new Database();
+      }
+
+      public function getUsers()
+      {
+         $this->db->query("SELECT * FROM user");
+         $result = $this->db->resultset();
+         return $result;
+      }
 
       // getters and setters
       public function getId(): int

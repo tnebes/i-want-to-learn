@@ -6,8 +6,15 @@
 
    session_start();
 
-   $APPLICATION_TITLE = 'I Want To Learn';
-   $APPLICATION_PATH = 'http://iwtl.com/';
+   define('APPLICATION_ROOT', dirname(dirname(__DIR__)));
+   define('APPLICATION_PATH', 'http://iwtl.com/');
+   define('APPLICATION_TITLE', 'I Want To Learn');
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'edunova');
+   define('DB_PASS', 'edunova');
+   define('DB_NAME', 'iwtl');
+
+   echo __FILE__;
 
    $users =
    [

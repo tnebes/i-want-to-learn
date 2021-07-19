@@ -11,7 +11,7 @@
 
    <div class="callout">
       <h5>Login</h5>
-      <form action="<?php echo $APPLICATION_PATH; ?>/config/authorisation.php" method="POST">
+      <form action="<?php echo APPLICATION_PATH; ?>/config/authorisation.php" method="POST">
          <label for="email">Email</label>
          <!-- TODO: email and password must be removed when released -->
          <input type="text" name="email" id="email" value="oper@edunova.hr">
