@@ -2,5 +2,5 @@
    require_once '../app/require.php';
 ?>
 
-Hello!
+This is index.php
 
