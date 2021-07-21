@@ -16,7 +16,7 @@
       {
          $this->db = new Database();
       }
-
+      
       public function register(array $data) : bool
       {
          $this->db->query('INSERT INTO user (username, password, email)

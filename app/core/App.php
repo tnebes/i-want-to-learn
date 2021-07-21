@@ -38,6 +38,11 @@
                $this->currentMethod = $url[1];
                unset($url[1]);
             }
+            else
+            {
+               // if the method doesn't exist, redirect to 404 page
+               header('location:' . URLROOT . '/pages/error');
+            }
          }
 
          // Assigning the rest of the URL to the params array

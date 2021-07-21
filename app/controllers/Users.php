@@ -8,6 +8,12 @@ class Users extends Controller
    {
       $this->userModel = $this->model('User');
    }
+   
+   public function index() : void
+   {
+      // print error for now
+      print("Error: index() not implemented");
+   }
 
    public function login()
    {

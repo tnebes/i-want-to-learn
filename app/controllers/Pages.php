@@ -17,5 +17,10 @@
          $this->view('pages/about');
       }
 
+      public function error()
+      {
+         $this->view('pages/error');
+      }
+
 
    }
