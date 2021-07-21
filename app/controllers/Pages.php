@@ -4,23 +4,12 @@
    {
       public function __construct()
       {
-         $this->userModel = $this->model('User');
       }
 
       public function index()
       {
-         // creating data
-         $users = $this->userModel->getUsers();
-
-
-         $data =
-         [
-            'title' => 'Pages',
-            'users' => $users,
-         ];
-         // passing the data to the view
-         
-         $this->view('pages/index', $data);
+         // creating data         
+         $this->view('pages/index');
       }
 
       public function about()

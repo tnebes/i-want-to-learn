@@ -1,10 +1,13 @@
 <?php declare(strict_types = 1);
 ?>
-It works?
-<?php
-   echo $data['title'];
-   echo '<br/>';
-   echo '<pre>';
-   var_dump($data);
-   echo '</pre>';
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <?php require_once APPROOT . '/views/includes/head.php'; ?>
+</head>
+<body>
+   <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
+</body>
+
+
+</html>
