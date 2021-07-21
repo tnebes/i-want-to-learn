@@ -7,6 +7,7 @@
 </head>
 <body>
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
+   <?php require_once APPROOT . '/views/includes/footer.php'; ?>
    <?php require_once APPROOT . '/views/includes/javascript.php'; ?>
 </body>
 

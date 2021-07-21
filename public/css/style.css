@@ -1,3 +1,8 @@
+:root
+{
+   --bg-col: #e6e6e6;
+}
+
 html, body
 {
    font-family: 'Open Sans Condensed', sans-serif;
@@ -47,6 +52,43 @@ html, body
    padding: 0.5em;
 }
 
+.footer
+{
+   /* TODO: the position may cause issues later on */
+   display: inline;
+   font-size: 18px;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   background-color: var(--bg-col);
+   padding-bottom: 0.5em;
+   text-align: center;
+   vertical-align: middle;
+}
+
+.footer > .container
+{
+   text-align: center;
+   margin: 0 auto;
+   padding: 0.5em 1em;
+}
+
+.footer-content
+{
+   /* horizontal <ul> */
+   list-style: none;
+   text-align: center;
+   margin: 0;
+   padding: 0;
+   display: inline;
+}
+
+.links > li
+{
+   padding-left: 3ex;
+   padding-right: 3ex;
+}
+
 .tabs-panel.is-active > p:nth-child(1)
 {
    font-weight: bold;
@@ -81,6 +123,10 @@ html, body
    font-weight: bold;
 }
 
+ul.footer-content > li
+{
+   float: left;
+}
 
 
 
