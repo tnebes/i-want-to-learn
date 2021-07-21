@@ -8,7 +8,7 @@
 <div class="top-bar" id="example-menu">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text"><a href="<?php echo URLROOT?>/pages/index.php">IWTL</a></li>
+      <li class="menu-text">IWTL</li>
       <li class="has-submenu">
         <a href="#0">Content</a>
         <ul class="submenu menu vertical" data-submenu>
@@ -24,7 +24,7 @@
       <!-- add a link to the user's profile -->
       <li><a href="<?php echo URLROOT ?>/users">My Profile</a></li>
       <li><a href="<?php echo URLROOT ?>/adminPanel">Control panel</a></li>
-      <li><a href="<?php echo URLROOT ?>/users/logout">Logout</a></li>
+      <li><a href="<?php echo URLROOT ?>/users/logout">Logout <span class="username"><?php echo $_SESSION['username'] ?></a></span></li>
       <? endif;?>
     </ul>
   </div>

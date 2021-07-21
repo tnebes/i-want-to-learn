@@ -26,7 +26,6 @@ class Users extends Controller
             'passwordError' => ''
 
          ];
-      $this->view('users/login', $data);
 
       if ($_SERVER['REQUEST_METHOD'] === 'POST')
       {
@@ -188,7 +187,9 @@ class Users extends Controller
 
    public function logout(): void
    {
-      unset($_SESSION);
+      unset($_SESSION['user_id']);
+      unset($_SESSION['username']);
+      unset($_SESSION['email']);
       header('location: ' . URLROOT . '/users/login');
    }
 }
