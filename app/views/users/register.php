@@ -41,6 +41,7 @@
         </form>
     </div>
 </div>
+<?php require_once APPROOT . '/views/includes/footer.php'; ?>
 <?php require_once APPROOT . '/views/includes/javascript.php'; ?>
 
 </body>
