@@ -10,7 +10,7 @@ create table user(
     registration_date datetime not null default current_timestamp,
     active bit not null default 1,
     `role` tinyint not null default 0, -- 0 - user, 1 - admin
-    last_online datetime
+    last_login datetime
 );
 
 create table topic(

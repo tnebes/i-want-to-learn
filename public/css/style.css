@@ -1,3 +1,12 @@
+:root
+{
+   --bg-col: #e6e6e6;
+}
+
+html, body
+{
+   font-family: 'Open Sans Condensed', sans-serif;
+}
 
 /*TODO: using <a> in the menu-text breaks the layout. This needs to be fixed. */
 .menu-text > a:nth-child(1)
@@ -29,6 +38,58 @@
    box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
 }
 
+.username
+{
+   font-weight: bold;
+}
+
+.error-container
+{
+   text-align: center;
+   margin: 25vh auto;
+   width: 100%;
+   max-width: 500px;
+   padding: 0.5em;
+}
+
+.footer
+{
+   /* TODO: the position may cause issues later on */
+   display: inline;
+   font-size: 18px;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   background-color: var(--bg-col);
+   padding-bottom: 0.5em;
+   text-align: center;
+   vertical-align: middle;
+}
+
+/* container for footer */
+.footer > div:nth-child(1)
+{
+   width: max-content;
+   text-align: center;
+   margin: 0 auto;
+   padding: 0.5em 1em;
+}
+
+.footer-content
+{
+   list-style: none;
+   text-align: center;
+   margin: 0;
+   padding: 0;
+   display: inline;
+}
+
+.links > li
+{
+   padding-left: 3ex;
+   padding-right: 3ex;
+}
+
 .tabs-panel.is-active > p:nth-child(1)
 {
    font-weight: bold;
@@ -49,4 +110,20 @@
    /* the href must be centered vertically */
    /* TODO: */
 }
+
+/* 404 page red text */
+.callout > h4:nth-child(1)
+{
+   color: red;
+   font-weight: bold;
+}
+
+/* aligning the contents of the list horizontally */
+ul.footer-content > li
+{
+   float: left;
+}
+
+
+
 
