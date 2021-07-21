@@ -2,14 +2,14 @@
 
    class User
    {
-      private $id;
-      private $userName;
-      private $password;
-      private $email;
-      private $registrationDate;
-      private $active;
-      private $role;
-      private $lastLogin; // TODO: change in DB from last_online to last_login
+      public $id;
+      public $username;
+      public $password;
+      public $email;
+      public $registrationDate;
+      public $active;
+      public $role;
+      public $lastLogin; // TODO: change in DB from last_online to last_login
       private $db;
 
       public function __construct()
@@ -32,6 +32,22 @@
          else
          {
             return false;
+         }
+      }
+
+      public function login(string $username, string $password)
+      {
+         $this->db->query('SELECT * FROM user WHERE username = :username');
+         $this->db->bind(':username', $username);
+         $row = $this->db->single();
+         $hashedPassword = $row->password;
+         if (password_verify($password, $hashedPassword))
+         {
+            return $row;
+         }
+         else
+         {
+            return null;
          }
       }
 

@@ -12,11 +12,69 @@
          $data = 
          [
             'Title' => 'Login page',
+            'username' => '',
+            'password' => '',
             'usernameError' => '',
             'passwordError' => ''
 
          ];
          $this->view('users/login', $data);
+
+         if ($_SERVER['REQUEST_METHOD'] === 'POST')
+         {
+            // sanitise post data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+            $data =
+            [
+               'username' => trim($_POST['username']),
+               'password' => trim($_POST['password']),
+               'usernameError' => '',
+               'passwordError' => ''
+            ];
+
+            if (empty($data['username']))
+            {
+               $data['usernameError'] = 'Username is required.';
+            }
+            if (empty($data['password']))
+            {
+               $data['passwordError'] = 'Password is required.';
+            }
+
+            if (empty($data['usernameError']) && empty($data['passwordError']))
+            {
+               $loggedInUser = $this->userModel->login($data['username'], $data['password']);
+               if ($loggedInUser)
+               {
+                  $this->createUserSession($loggedInUser);
+               }
+               else
+               {
+                  $data['passwordError'] = 'Invalid username or password.';
+                  $this->view('users/login', $data);
+               }
+            }
+         }
+         else
+         {
+            $data = 
+            [
+               'username' => '',
+               'password' => '',
+               'usernameError' => '',
+               'passwordError' => ''
+            ];
+         }
+         $this->view('users/login', $data);
+      }
+
+      public function createUserSession($user) : void
+      {
+         session_start();
+         $_SESSION['user_id'] = $user->id;
+         $_SESSION['username'] = $user->username;
+         $_SESSION['email'] = $user->email;
       }
 
       public function register()
