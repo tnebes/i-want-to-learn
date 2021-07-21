@@ -2,7 +2,7 @@
 ?>
 <hr />
 <div class="footer">
-   <div class="container">
+   <div>
       <ul class="footer-content">
          <li>&copy; <?php echo APP_NAME, ' ', date('Y'); ?></li>
          <ul class="footer-content links">

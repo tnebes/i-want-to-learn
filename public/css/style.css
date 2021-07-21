@@ -66,8 +66,10 @@ html, body
    vertical-align: middle;
 }
 
-.footer > .container
+/* container for footer */
+.footer > div:nth-child(1)
 {
+   width: max-content;
    text-align: center;
    margin: 0 auto;
    padding: 0.5em 1em;
@@ -75,7 +77,6 @@ html, body
 
 .footer-content
 {
-   /* horizontal <ul> */
    list-style: none;
    text-align: center;
    margin: 0;
@@ -110,19 +111,14 @@ html, body
    /* TODO: */
 }
 
-.dropdown > li:nth-child(6) > a:nth-child(1)
-{
-   /* add a frame around it */
-   border: 1px solid black;
-   border-radius: 3px;
-}
-
+/* 404 page red text */
 .callout > h4:nth-child(1)
 {
    color: red;
    font-weight: bold;
 }
 
+/* aligning the contents of the list horizontally */
 ul.footer-content > li
 {
    float: left;
