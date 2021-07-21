@@ -38,6 +38,15 @@ html, body
    font-weight: bold;
 }
 
+.error-container
+{
+   text-align: center;
+   margin: 25vh auto;
+   width: 100%;
+   max-width: 500px;
+   padding: 0.5em;
+}
+
 .tabs-panel.is-active > p:nth-child(1)
 {
    font-weight: bold;
@@ -64,6 +73,12 @@ html, body
    /* add a frame around it */
    border: 1px solid black;
    border-radius: 3px;
+}
+
+.callout > h4:nth-child(1)
+{
+   color: red;
+   font-weight: bold;
 }
 
 

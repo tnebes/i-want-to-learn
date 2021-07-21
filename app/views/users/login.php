@@ -7,10 +7,7 @@
 </head>
 <body>
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
-   
-</body>
-
-<div class="container-login">
+   <div class="container-login">
     <div class="wrapper-login">
         <h2>Sign in</h2>
 
@@ -31,5 +28,9 @@
         </form>
     </div>
 </div>
+<?php require_once APPROOT . '/views/includes/javascript.php'; ?>
+
+</body>
+
 
 </html>
