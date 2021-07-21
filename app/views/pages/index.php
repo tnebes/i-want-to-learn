@@ -4,5 +4,7 @@ It works?
 <?php
    echo $data['title'];
    echo '<br/>';
-   echo $data['content'];
+   echo '<pre>';
+   var_dump($data);
+   echo '</pre>';
 ?>

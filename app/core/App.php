@@ -13,13 +13,11 @@
       {
          $url = $this->getUrl();
 
-         // if the get parameter is empty, redirect to public/index.php
-         // BUG: if the url is /public/index, the URL array contains only 1 element
-         // TODO: find a better solution
-         if (!isset($url[0]))
-         {
-            die();
-         }
+         /*
+         * if the get parameter is empty, redirect to public/index.php
+         * BUG: if the url is /public/index, the URL array contains only 1 element
+         * TODO: find a better solution
+         */
 
          // Controllers need to be capitalised
          if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php'))

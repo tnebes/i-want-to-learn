@@ -4,3 +4,7 @@
 
 This is index.php
 
+<?php
+   echo APPROOT;
+?>
+

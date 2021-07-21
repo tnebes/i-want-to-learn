@@ -4,16 +4,19 @@
    {
       public function __construct()
       {
-
+         $this->userModel = $this->model('User');
       }
 
       public function index()
       {
          // creating data
+         $users = $this->userModel->getUsers();
+
+
          $data =
          [
             'title' => 'Pages',
-            'content' => 'Pages'
+            'users' => $users,
          ];
          // passing the data to the view
          
