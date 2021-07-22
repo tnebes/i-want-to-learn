@@ -12,7 +12,12 @@
       public function __construct()
       {
          $url = $this->getUrl();
-
+         if (!$url)
+         {
+            $url[0] = $this->currentController;
+            $url[1] = $this->currentMethod;
+         }
+         
          /*
          * if the get parameter is empty, redirect to public/index.php
          * BUG: if the url is /public/index, the URL array contains only 1 element
@@ -25,6 +30,11 @@
             // sets a new controller
             $this->currentController = ucwords($url[0]);
             unset($url[0]);
+         }
+         else
+         {
+            // if the controller doesn't exist, redirect to 404 page
+            header('Location:' . URLROOT . '/pages/error');
          }
 
          // Requiring the controller and instantiating it

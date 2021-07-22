@@ -9,17 +9,19 @@
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
    <div class="container">
    <?php if ($data['admin']): ?>
-      <table class="table">
+      <!-- TODO: implement searching users from here. -->
+      <a href="<?php echo URLROOT ?>/users/register" class="success button">Add new user</a>
+      <table class="table" id="admin-user-table">
          <thead>
             <tr>
                <th>ID</th>
                <th>Username</th>
                <th>Email</th>
-               <th>Registration date</th>
+               <th class="view-hidden">Registration date</th>
                <th>Role</th>
-               <th>Last login</th>
+               <th class="view-hidden">Last login</th>
                <th>Banned</th>
-               <th>Date banned</th>
+               <th class="view-hidden">Date banned</th>
                <th>Actions</th>
             </tr>
          </thead>
@@ -29,11 +31,11 @@
                <td><?php echo $user->id; ?></td>
                <td><?php echo $user->username; ?></td>
                <td><?php echo $user->email; ?></td>
-               <td><?php echo $user->registrationDate; ?></td>
+               <td class="view-hidden"><?php echo $user->registrationDate; ?></td>
                <td><?php echo $user->role; ?></td>
-               <td><?php echo $user->lastLogin; ?></td>
+               <td class="view-hidden"><?php echo $user->lastLogin; ?></td>
                <td><?php echo $user->banned; ?></td>
-               <td><?php echo $user->dateBanned; ?></td>
+               <td class="view-hidden"><?php echo $user->dateBanned; ?></td>
                <td class="actions"><div><?php echo getActionsOnUser((int) $user->id); ?></div></td>
             </tr>
             <?php endforeach; ?>
@@ -56,7 +58,6 @@
             <?php endforeach; ?>
          </tbody>
       </table>
-
    <?php endif; ?>
    </div>
    <?php require_once APPROOT . '/views/includes/footer.php'; ?>

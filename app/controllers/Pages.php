@@ -8,8 +8,7 @@
       }
 
       public function index()
-      {
-         // creating data         
+      {   
          $this->view('pages/index');
       }
 

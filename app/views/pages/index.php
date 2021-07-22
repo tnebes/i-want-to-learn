@@ -7,6 +7,20 @@
 </head>
 <body>
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
+   <!-- foundation index page -->
+   <div class="section-landing">
+      <div class="wrapper-landing">
+         <h1>Learn everything.</h1>
+         <h2>Are you a in-depth learner?</h2>
+         <h3>Are you looking for a specific subject?</h3>
+         <h4>Are you looking for a specific course?</h4>
+         <h5>Are you looking for a specific book?</h5>
+         <h6>Are you looking for specific materials?</h6>
+         <h1>With IWTL, the sky is the limit</h1>
+         <h2>IWTL is a community-driven project</h2>
+         <h3>Read, learn and contribute.</h3>
+      </div>
+   </div>
    <?php require_once APPROOT . '/views/includes/footer.php'; ?>
    <?php require_once APPROOT . '/views/includes/javascript.php'; ?>
 </body>
