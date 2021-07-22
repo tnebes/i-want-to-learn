@@ -6,6 +6,12 @@
 html, body
 {
    font-family: 'Open Sans Condensed', sans-serif;
+   height: 100%;
+}
+
+body
+{
+   min-height: 100%;
 }
 
 /*TODO: using <a> in the menu-text breaks the layout. This needs to be fixed. */
@@ -55,20 +61,21 @@ html, body
 .footer
 {
    /* TODO: the position may cause issues later on */
-   display: inline;
+   /* TODO: make the footer stick to the bottom of the body & html. */
    font-size: 18px;
-   position: fixed;
+   position: relative;
    bottom: 0;
-   width: 100%;
    background-color: var(--bg-col);
    padding-bottom: 0.5em;
    text-align: center;
    vertical-align: middle;
+   width: 100%;
 }
 
 /* container for footer */
 .footer > div:nth-child(1)
 {
+   min-height: 40px;
    width: max-content;
    text-align: center;
    margin: 0 auto;
@@ -104,13 +111,6 @@ html, body
    position: absolute;
 }
 
-/* Centering the text with the previous button */
-.callout > form:nth-child(2) > div:nth-child(5) > a:nth-child(2)
-{
-   /* the href must be centered vertically */
-   /* TODO: */
-}
-
 /* 404 page red text */
 .callout > h4:nth-child(1)
 {
@@ -123,6 +123,44 @@ ul.footer-content > li
 {
    float: left;
 }
+
+.form
+{
+   margin: auto 5%;
+}
+
+.form::before
+{
+   margin-top: 5%;
+}
+
+@media (max-width: 460px)
+{
+   .footer
+   {
+      display: flexbox;
+      height: 100%;
+   }
+
+   .footer-content
+   {
+      display: flex;
+      flex-direction: column;
+   }
+
+   .links > li
+   {
+      padding: 1vh 1vw 0 1vw;
+      display: inline;
+   }
+
+   .footer > div:nth-child(1)
+   {
+      min-width: none;
+   }
+}
+
+
 
 
 

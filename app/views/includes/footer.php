@@ -1,6 +1,5 @@
 <?php declare(strict_types = 1);
 ?>
-<hr />
 <div class="footer">
    <div>
       <ul class="footer-content">

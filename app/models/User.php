@@ -9,7 +9,7 @@
       public $registrationDate;
       public $active;
       public $role;
-      public $lastLogin; // TODO: change in DB from last_online to last_login
+      public $lastLogin;
       private $db;
 
       public function __construct()
