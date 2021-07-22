@@ -8,9 +8,10 @@ create table user(
     `password` varchar(255) not null,
     email varchar(255) not null,
     registrationDate datetime not null default current_timestamp,
-    active bit not null default 1,
     `role` tinyint not null default 0, -- 0 - user, 1 - admin
-    lastLogin datetime
+    lastLogin datetime,
+    banned bit not null default 0,
+    dateBanned datetime
 );
 
 create table topic(

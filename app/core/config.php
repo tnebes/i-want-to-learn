@@ -14,6 +14,10 @@
    // constants for the url root
    define('URLROOT', 'http://iwtl.com');
 
+   // the name of the site
    define('APP_NAME', 'IWTL');
 
+   /* Constants for database */
+   define('PUBLIC_SQL_DATA', 'username, registrationDate');
+   define('PRIVATE_SQL_DATA', 'id, username, email, registrationDate, role, lastLogin, banned, dateBanned');
 ?>

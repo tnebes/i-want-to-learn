@@ -101,6 +101,64 @@ body
    display: inline;
 }
 
+thead > tr > th
+{
+   text-align: center;
+}
+
+.table > tbody > tr > td > div > a > img
+{
+   max-width: 24px;
+   max-height: 24px;
+   margin: 0 10px;
+}
+
+td.actions
+{
+   display:inline-block;
+   margin: auto;
+   padding: auto;
+   text-align: center;
+   width: 100%;
+}
+
+/* TODO: coloring of the SVGs is cursed. */
+#user-profile
+{
+   filter: invert(48%)
+      sepia(79%)
+      saturate(2476%)
+      hue-rotate(175deg)
+      brightness(118%)
+      contrast(119%);
+}
+
+#user-update
+{
+   filter: invert(48%)
+   sepia(79%)
+   saturate(2476%)
+   hue-rotate(175deg)
+   brightness(50%)
+   contrast(119%);
+}
+
+#user-delete
+{
+   filter: invert(0.5)
+   sepia(1)
+   saturate(40)
+   hue-rotate(-30deg);
+}
+
+#user-ban
+{
+   filter: invert(0.05)
+   sepia(1)
+   saturate(50)
+   hue-rotate(-30deg);
+}
+
 .links > li
 {
    padding-left: 3ex;

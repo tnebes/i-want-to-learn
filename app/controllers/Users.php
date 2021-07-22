@@ -11,8 +11,23 @@ class Users extends Controller
    
    public function index() : void
    {
-      // print error for now
-      print("Error: index() not implemented");
+      if (!isLoggedIn())
+      {
+         redirect('/');
+         return;
+      }
+      $data = [];
+      if (isAdmin())
+      {
+         $data['admin'] = true;
+         $data['users'] = $this->userModel->getUsersPrivate();
+      }
+      else
+      {
+         $data['admin'] = false;
+         $data['users'] = $this->userModel->getUsersPublic();
+      }
+      $this->view('users/index', $data);
    }
 
    public function login()
