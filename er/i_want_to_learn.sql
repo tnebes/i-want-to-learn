@@ -7,17 +7,17 @@ create table user(
     username varchar(50) not null,
     `password` varchar(255) not null,
     email varchar(255) not null,
-    registration_date datetime not null default current_timestamp,
+    registrationDate datetime not null default current_timestamp,
     active bit not null default 1,
     `role` tinyint not null default 0, -- 0 - user, 1 - admin
-    last_login datetime
+    lastLogin datetime
 );
 
 create table topic(
     id int primary key not null auto_increment,
     `name` varchar(255) not null,
     `description` text not null,
-    date_posted datetime not null default current_timestamp,
+    datePosted datetime not null default current_timestamp,
     user int not null,
     image int
 );
@@ -27,31 +27,31 @@ create table suggestion(
     `user` int not null,
     title varchar(255) not null,
     topic int not null,
-    date_posted datetime not null default current_timestamp,
-    short_description varchar(255) not null,
-    long_description text
+    datePosted datetime not null default current_timestamp,
+    shortDescription varchar(255) not null,
+    longDescription text
 );
 
 create table image(
     id int primary key not null auto_increment,
     `user` int not null,
-    file_path varchar(255) not null,
-    date_posted datetime not null default current_timestamp,
-    alt_text varchar(255),
+    filePath varchar(255) not null,
+    datePosted datetime not null default current_timestamp,
+    altText varchar(255),
     suggestion int
 );
 
-create table user_topic_subscription(
+create table userTopicSubscription(
     `user` int not null,
     topic int not null,
-    subscribed_since datetime not null default current_timestamp
+    subscribedSince datetime not null default current_timestamp
 );
 
-create table user_suggestion_review(
+create table userSuggestionReview(
 	`user` int not null,
 	suggestion int not null,
-	user_score tinyint not null default 1,
-	date_reviewed datetime not null default current_timestamp
+	userScore tinyint not null default 1,
+	dateReviewed datetime not null default current_timestamp
 );
 
 alter table topic
@@ -69,14 +69,14 @@ alter table image
 alter table image
 	add foreign key (suggestion) references suggestion(id);
 
-alter table user_topic_subscription
+alter table userTopicSubscription
     add foreign key (user) references user(id);
-alter table user_topic_subscription
+alter table userTopicSubscription
     add foreign key (topic) references topic(id);
    
-alter table user_suggestion_review
+alter table userSuggestionReview
 	add foreign key (user) references user(id);
-alter table user_suggestion_review
+alter table userSuggestionReview
 	add foreign key (suggestion) references suggestion(id);
 
 
