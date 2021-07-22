@@ -82,6 +82,12 @@ class Users extends Controller
 
    public function register()
    {
+      if (!isAdmin() && isLoggedIn())
+      {
+         // TODO: add a better way of redirecting the user
+         redirect('/users/index');
+      }
+      
       $data =
          [
             'Title' => 'Register page',

@@ -72,6 +72,16 @@ body
    width: 100%;
 }
 
+.form
+{
+   margin: 5% 5%;
+}
+
+#login-data
+{
+   margin: 5% 5%;
+}
+
 /* container for footer */
 .footer > div:nth-child(1)
 {
@@ -124,15 +134,15 @@ ul.footer-content > li
    float: left;
 }
 
-.form
+/* the login data on the login page */
+div.callout:nth-child(4) > pre:nth-child(2)
 {
-   margin: auto 5%;
+   padding-top: 2vh;
 }
 
-.form::before
-{
-   margin-top: 5%;
-}
+
+
+
 
 @media (max-width: 460px)
 {

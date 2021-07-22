@@ -24,7 +24,7 @@
       <li><a href="#0">Options</a></li>
       <!-- add a link to the user's profile -->
       <li><a href="<?php echo URLROOT ?>/users">My Profile</a></li>
-      <li><a href="<?php echo URLROOT ?>/adminPanel">Control panel</a></li>
+      <?php if(isAdmin()) echo '<li><a href="<?php echo URLROOT ?>/adminPanel">Control panel</a></li>' ?>
       <li><a href="<?php echo URLROOT ?>/users/logout">Logout <span class="username"><?php echo $_SESSION['username'] ?></a></span></li>
       <? endif;?>
     </ul>

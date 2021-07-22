@@ -6,3 +6,8 @@
    {
       return isset($_SESSION['user_id']);
    }
+
+   function isAdmin() : bool
+   {
+      return $_SESSION['role'] == 1;
+   }

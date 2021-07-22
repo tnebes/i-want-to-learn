@@ -55,7 +55,7 @@
       /**
        * Get the URL for the current request.
        */
-      public function getUrl()
+      public function getUrl() : array
       {
          if (isset($_GET['url']))
          {
@@ -66,5 +66,6 @@
 
             return $url;
          }
+         return [];
       }
    }
