@@ -5,6 +5,8 @@
    require_once 'core/Controller.php';
    require_once 'core/Database.php';
    require_once 'helpers/sessionHelper.php';
+   require_once 'helpers/userHelper.php';
+   require_once 'helpers/functions.php';
 
    // Instantiate the App class
    $app = new App();

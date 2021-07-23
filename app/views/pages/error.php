@@ -14,6 +14,7 @@
          <p>The page you requested could not be found.</p>
       </div>
    </div>
+   <?php require_once APPROOT . '/views/includes/footer.php'; ?>
    <?php require_once APPROOT . '/views/includes/javascript.php'; ?>
 </body>
 

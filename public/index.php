@@ -2,9 +2,5 @@
    require_once '../app/require.php';
 ?>
 
-This is index.php
 
-<?php
-   echo APPROOT;
-?>
 

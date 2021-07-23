@@ -7,9 +7,10 @@
       public $password;
       public $email;
       public $registrationDate;
-      public $active;
       public $role;
-      public $lastLogin; // TODO: change in DB from last_online to last_login
+      public $lastLogin;
+      public $banned;
+      public $dateBanned;
       private $db;
 
       public function __construct()
@@ -40,6 +41,16 @@
          $this->db->query('SELECT * FROM user WHERE username = :username');
          $this->db->bind(':username', $username);
          $row = $this->db->single();
+
+         if ($row == null)
+         {
+            return null;
+         }
+         if ($row->banned)
+         {
+            return null;
+         }
+         
          $hashedPassword = $row->password;
          if (password_verify($password, $hashedPassword))
          {
@@ -51,9 +62,16 @@
          }
       }
 
-      public function getUsers()
+      public function getUsersPrivate() : array
       {
-         $this->db->query("SELECT * FROM user");
+         $this->db->query("SELECT " . PRIVATE_SQL_DATA . " FROM user");
+         $result = $this->db->resultSet();
+         return $result;
+      }
+
+      public function getUsersPublic() : array
+      {
+         $this->db->query("SELECT " . PUBLIC_SQL_DATA . " FROM user");
          $result = $this->db->resultSet();
          return $result;
       }
