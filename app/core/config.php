@@ -14,8 +14,9 @@
    // constants for the url root
    define('URLROOT', 'http://iwtl.com');
 
-   // the name of the site
+   // the name of the site and its author
    define('APP_NAME', 'IWTL');
+   define('AUTHOR', 'tnebes');
 
    /* Constants for database */
    define('PUBLIC_SQL_DATA', 'username, registrationDate');
