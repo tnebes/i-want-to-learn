@@ -118,17 +118,11 @@ class Users extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') 
       {
-         echo '<pre>';
-         print_r($_POST);
-         echo '</pre>';
          // TODO: check whether this is necessary
          if (isset($_POST['submit'])) 
          {
             //sanitise POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
             $data =
                [
                   'username' => trim($_POST['username']),
