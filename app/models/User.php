@@ -87,4 +87,12 @@
          return false;
       }
 
+      public function getSingleUserById(int $id) : stdClass
+      {
+         $this->db->query("SELECT " . PRIVATE_SQL_DATA . " FROM user WHERE id = :id");
+         $this->db->bind(":id", $id);
+         $result = $this->db->single();
+         return $result;
+      }
+
    }

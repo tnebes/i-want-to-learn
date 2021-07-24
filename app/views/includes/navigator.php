@@ -12,7 +12,7 @@
         <ul class="submenu menu vertical" data-submenu>
           <li><a href="<?php echo URLROOT ?>/topics">Topics</a></li>
           <li><a href="<?php echo URLROOT ?>/suggestions">Suggestions</a></li>
-          <li><a href="<?php echo URLROOT ?>/users">Users</a></li>
+          <?php if(isLoggedIn()) echo '<li><a href="'. URLROOT . '/users">Users</a></li>' ?> 
         </ul>
       </li>
       <?php if(!isLoggedIn()): ?> 

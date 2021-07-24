@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 class Users extends Controller
 {
+   // NOTE: TODO: Users have been removed from the navigator. Fix this once a proper solution has been found.
    public function __construct()
    {
       $this->userModel = $this->model('User');
@@ -13,6 +14,7 @@ class Users extends Controller
    {
       if (!isLoggedIn())
       {
+         // TODO:
          redirect('/');
          return;
       }
@@ -32,6 +34,7 @@ class Users extends Controller
 
    public function login() : void
    {
+      // TODO: redirect the user away from this page when they are already logged in.
       if (isLoggedIn())
       {
          redirect('/');
@@ -219,11 +222,20 @@ class Users extends Controller
       header('location: ' . URLROOT . '/users/login');
    }
 
-   public function profile(array $data) : void
+   public function profile() : void
    {
+      // gets the arguments from the APP.php call
+      $data = func_get_args();
+      if (!$data)
+      {
+         // TODO: ehh redirection
+         return;         
+      }
       if (isset($data))
       {
-         $this->view('/');
+         $user = $this->userModel->getSingleUserById((int) $data[0]);
+         $this->view('users/profile', $user);
+         unset($data[0]);
          return;
       }
    }

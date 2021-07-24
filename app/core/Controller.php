@@ -17,7 +17,7 @@
          }
          else
          {
-            require_once '../app/views/error.php';
+            require_once '../app/views/pages/error.php';
          }
       }
    }

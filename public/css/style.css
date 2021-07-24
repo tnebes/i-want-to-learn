@@ -78,17 +78,6 @@ body
    width: 100%;
 }
 
-/* The background image does not appear. TODO: this needs to be fixed. */
-.menu-text
-{
-   background: url("./assets/images/logo.png") no-repeat center center;
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: contain;
-   /* Make the element fit within the div */
-   width: 100%;
-}
-
 .add-user-form
 {
    width: 50%;
@@ -279,14 +268,12 @@ div.callout:nth-child(4) > pre:nth-child(2)
       display: none;
    }
 
-.table > tbody > tr > td > div > a > img
-{
-   max-width: 30px;
-   max-height: 30px;
-   margin: 5px 10px;
-}
-
-
+   .table > tbody > tr > td > div > a > img
+   {
+      max-width: 30px;
+      max-height: 30px;
+      margin: 5px 10px;
+   }
 }
 
 @media (max-width: 480px)
