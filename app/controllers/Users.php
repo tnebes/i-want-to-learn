@@ -32,6 +32,11 @@ class Users extends Controller
 
    public function login() : void
    {
+      if (isLoggedIn())
+      {
+         redirect('/');
+         return;
+      }
       $data =
          [
             'Title' => 'Login page',
@@ -212,5 +217,14 @@ class Users extends Controller
       unset($_SESSION['email']);
       unset($_SESSION['role']);
       header('location: ' . URLROOT . '/users/login');
+   }
+
+   public function profile(array $data) : void
+   {
+      if (isset($data))
+      {
+         $this->view('/');
+         return;
+      }
    }
 }

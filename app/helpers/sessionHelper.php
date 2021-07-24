@@ -9,5 +9,9 @@
 
    function isAdmin() : bool
    {
-      return $_SESSION['role'] == 1;
+      if (isset($_SESSION['role']))
+      {
+         return $_SESSION['role'] == 1;
+      }
+      return false;
    }

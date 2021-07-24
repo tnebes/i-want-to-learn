@@ -8,7 +8,7 @@
 <body>
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
    <!-- foundation index page -->
-   <div class="callout section-landing">
+   <div class="section-landing">
       <div class="wrapper-landing">
          <h1>Learn everything.</h1>
          <div class="row">
