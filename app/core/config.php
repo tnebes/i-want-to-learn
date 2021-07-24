@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-   // constant for the database connection
+   // constants for the database connection
    define('DB_HOST', 'localhost');
    define('DB_NAME', 'iwtl');
    define('DB_USER', 'edunova');

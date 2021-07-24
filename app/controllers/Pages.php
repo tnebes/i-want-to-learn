@@ -7,17 +7,17 @@
          
       }
 
-      public function index()
+      public function index() : void
       {   
          $this->view('pages/index');
       }
 
-      public function about()
+      public function about() : void 
       {
          $this->view('pages/about');
       }
 
-      public function error()
+      public function error() : void
       {
          $this->view('pages/error');
       }

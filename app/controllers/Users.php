@@ -30,7 +30,7 @@ class Users extends Controller
       $this->view('users/index', $data);
    }
 
-   public function login()
+   public function login() : void
    {
       $data =
          [
@@ -71,6 +71,8 @@ class Users extends Controller
             } else {
                $data['passwordError'] = 'Invalid username or password.';
                $this->view('users/login', $data);
+               // TODO: check whether its necessary to return
+               return;
             }
          }
       }
@@ -95,12 +97,13 @@ class Users extends Controller
       $_SESSION['role'] = $user->role;
    }
 
-   public function register()
+   public function register() : void
    {
       if (!isAdmin() && isLoggedIn())
       {
          // TODO: add a better way of redirecting the user
-         redirect('/users/index');
+         redirect('/');
+         return;
       }
       
       $data =
@@ -189,6 +192,8 @@ class Users extends Controller
                if ($this->userModel->register($data)) 
                {
                   header('location: ' . URLROOT . '/users/login');
+                  // TODO: check whether it is necessary to return
+                  return;
                } 
                else 
                {

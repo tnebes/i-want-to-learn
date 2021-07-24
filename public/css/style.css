@@ -26,9 +26,13 @@ body
    width: 100%;
 }
 
+.callout.section-landing
+{
+   margin-bottom: 0;
+}
+
 .wrapper-landing
 {
-   width: max-content;
    padding: 5% 10%;
    position: relative;
    text-align: center;
@@ -36,30 +40,36 @@ body
    top: 20%;
    /* make the text inside stand out */
    color: white;
-   font-size: 2em;
+   font-size: 3vw;
    font-weight: bold;
 }
 
 .wrapper-landing h1, h2, h3, h4, h5, h6
 {
    color: rgb(0, 0, 0);
+   display: flexbox;
 }
 
 .wrapper-landing h1
 {
    color: black;
-   font-size: 2em;
+   font-size: 6vw;
    font-weight: bold;
-   text-shadow: 0 0 2em #000;
    text-transform: uppercase;
 }
 
 .wrapper-landing h2
 {
+   font-family: 'Open Sans Condensed', sans-serif;
    color: black;
-   font-size: 1.5em;
-   font-weight: bold;
-   text-transform: uppercase;
+   font-size: 4vw;
+}
+
+.wrapper-landing p
+{
+   color: black;
+   font-weight: 100;
+   font-size: 3vw;
 }
 
 /*TODO: using <a> in the menu-text breaks the layout. This needs to be fixed. */
@@ -117,7 +127,6 @@ body
    padding-bottom: 0.5em;
    text-align: center;
    vertical-align: middle;
-   width: 100%;
 }
 
 .form
