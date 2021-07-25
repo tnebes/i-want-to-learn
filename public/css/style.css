@@ -38,7 +38,6 @@ body
    text-align: center;
    /* make the text inside stand out */
    color: white;
-   font-size: 3vw;
    font-weight: bold;
 }
 
@@ -51,7 +50,7 @@ body
 .wrapper-landing h1
 {
    color: black;
-   font-size: 6vw;
+   font-size: 5vw;
    font-weight: bold;
    text-transform: uppercase;
 }
@@ -60,14 +59,14 @@ body
 {
    font-family: 'Open Sans Condensed', sans-serif;
    color: black;
-   font-size: 4vw;
+   font-size: 3vw;
 }
 
 .wrapper-landing p
 {
    color: black;
    font-weight: 100;
-   font-size: 3vw;
+   font-size: 2vw;
 }
 
 /*TODO: using <a> in the menu-text breaks the layout. This needs to be fixed. */
@@ -301,8 +300,22 @@ div.callout:nth-child(4) > pre:nth-child(2)
    {
       min-width: none;
    }
-}
 
+   .wrapper-landing h1
+   {
+      font-size: 3em;
+   }
+
+   .wrapper-landing h2
+   {
+      font-size: 2em;
+   }
+
+   .wrapper-landing p
+   {
+      font-size: 1em;
+   }
+}
 
 
 

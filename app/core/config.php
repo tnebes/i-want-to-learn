@@ -19,6 +19,6 @@
    define('AUTHOR', 'tnebes');
 
    /* Constants for database */
-   define('PUBLIC_SQL_DATA', 'username, registrationDate');
+   define('PUBLIC_SQL_DATA', 'id, username, registrationDate');
    define('PRIVATE_SQL_DATA', 'id, username, email, registrationDate, role, lastLogin, banned, dateBanned');
 ?>

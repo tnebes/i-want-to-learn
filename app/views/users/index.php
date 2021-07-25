@@ -52,7 +52,7 @@
          <tbody>
             <?php foreach ($data['users'] as $user): ?>
             <tr>
-               <td><?php echo $user->username; ?></td>
+               <td><?php echo '<a href=' . URLROOT . '/users/profile/' . $user->id . '>' . $user->username . '</a>'; ?></td>
                <td><?php echo $user->registrationDate; ?></td>
             </tr>
             <?php endforeach; ?>

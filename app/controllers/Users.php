@@ -239,4 +239,38 @@ class Users extends Controller
          return;
       }
    }
+
+   public function ban() : void
+   {
+      // expected arguments when passed include true to indicate immediate deletion without any additional confirmation
+      $data = func_get_args();
+      if (!$data)
+      {
+         // TODO: ehh redirection
+         return;
+      }
+      $user = $this->userModel->getSingleUserById((int) $data[0]);
+      unset($data[0]);
+
+      // if all is set, ban the user
+      if (isset($data[1]) && $data[1] == true && isAdmin())
+      {
+         if ($user->banned != 0)
+         {
+            unset($data[1]);
+            $this->userModel->unbanUserById((int) $user->id);
+         }
+         else
+         {
+            unset($data[1]);
+            $this->userModel->banUserById((int) $user->id);
+         }
+      }
+      else if (isset($data[1]) && !$data[1])
+      {
+         
+      }
+      $this->view('users/ban', $user);
+      return;
+   }
 }
