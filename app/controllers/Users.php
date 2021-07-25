@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 class Users extends Controller
 {
+   // NOTE: TODO: Users have been removed from the navigator. Fix this once a proper solution has been found.
    public function __construct()
    {
       $this->userModel = $this->model('User');
@@ -13,6 +14,7 @@ class Users extends Controller
    {
       if (!isLoggedIn())
       {
+         // TODO:
          redirect('/');
          return;
       }
@@ -30,8 +32,14 @@ class Users extends Controller
       $this->view('users/index', $data);
    }
 
-   public function login()
+   public function login() : void
    {
+      // TODO: redirect the user away from this page when they are already logged in.
+      if (isLoggedIn())
+      {
+         redirect('/');
+         return;
+      }
       $data =
          [
             'Title' => 'Login page',
@@ -71,6 +79,8 @@ class Users extends Controller
             } else {
                $data['passwordError'] = 'Invalid username or password.';
                $this->view('users/login', $data);
+               // TODO: check whether its necessary to return
+               return;
             }
          }
       }
@@ -95,12 +105,13 @@ class Users extends Controller
       $_SESSION['role'] = $user->role;
    }
 
-   public function register()
+   public function register() : void
    {
       if (!isAdmin() && isLoggedIn())
       {
          // TODO: add a better way of redirecting the user
-         redirect('/users/index');
+         redirect('/');
+         return;
       }
       
       $data =
@@ -118,17 +129,11 @@ class Users extends Controller
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') 
       {
-         echo '<pre>';
-         print_r($_POST);
-         echo '</pre>';
          // TODO: check whether this is necessary
          if (isset($_POST['submit'])) 
          {
             //sanitise POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
             $data =
                [
                   'username' => trim($_POST['username']),
@@ -195,6 +200,8 @@ class Users extends Controller
                if ($this->userModel->register($data)) 
                {
                   header('location: ' . URLROOT . '/users/login');
+                  // TODO: check whether it is necessary to return
+                  return;
                } 
                else 
                {
@@ -213,5 +220,57 @@ class Users extends Controller
       unset($_SESSION['email']);
       unset($_SESSION['role']);
       header('location: ' . URLROOT . '/users/login');
+   }
+
+   public function profile() : void
+   {
+      // gets the arguments from the APP.php call
+      $data = func_get_args();
+      if (!$data)
+      {
+         // TODO: ehh redirection
+         return;         
+      }
+      if (isset($data))
+      {
+         $user = $this->userModel->getSingleUserById((int) $data[0]);
+         $this->view('users/profile', $user);
+         unset($data[0]);
+         return;
+      }
+   }
+
+   public function ban() : void
+   {
+      // expected arguments when passed include true to indicate immediate deletion without any additional confirmation
+      $data = func_get_args();
+      if (!$data)
+      {
+         // TODO: ehh redirection
+         return;
+      }
+      $user = $this->userModel->getSingleUserById((int) $data[0]);
+      unset($data[0]);
+
+      // if all is set, ban the user
+      if (isset($data[1]) && $data[1] == true && isAdmin())
+      {
+         if ($user->banned != 0)
+         {
+            unset($data[1]);
+            $this->userModel->unbanUserById((int) $user->id);
+         }
+         else
+         {
+            unset($data[1]);
+            $this->userModel->banUserById((int) $user->id);
+         }
+      }
+      else if (isset($data[1]) && !$data[1])
+      {
+         
+      }
+      $this->view('users/ban', $user);
+      return;
    }
 }

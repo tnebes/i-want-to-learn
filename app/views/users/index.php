@@ -29,7 +29,7 @@
             <?php foreach ($data['users'] as $user): ?>
             <tr>
                <td><?php echo $user->id; ?></td>
-               <td><?php echo $user->username; ?></td>
+               <td><?php echo '<a href=' . URLROOT . '/users/profile/' . $user->id . '>' . $user->username . '</a>'; ?></td>
                <td><?php echo $user->email; ?></td>
                <td class="view-hidden"><?php echo $user->registrationDate; ?></td>
                <td><?php echo $user->role; ?></td>
@@ -52,7 +52,7 @@
          <tbody>
             <?php foreach ($data['users'] as $user): ?>
             <tr>
-               <td><?php echo $user->username; ?></td>
+               <td><?php echo '<a href=' . URLROOT . '/users/profile/' . $user->id . '>' . $user->username . '</a>'; ?></td>
                <td><?php echo $user->registrationDate; ?></td>
             </tr>
             <?php endforeach; ?>

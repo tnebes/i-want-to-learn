@@ -3,7 +3,7 @@
 <div class="footer">
    <div>
       <ul class="footer-content">
-         <li>&copy; <?php echo APP_NAME, ' ', date('Y'); ?></li>
+         <li>&copy; <?php echo APP_NAME, ' by ', AUTHOR, ' ' , date('Y'); ?></li>
          <ul class="footer-content links">
             <li><a href="<?php echo URLROOT; ?>/pages/help">Help</a></li>
             <li><a href="<?php echo URLROOT; ?>/pages/about">About</a></li>

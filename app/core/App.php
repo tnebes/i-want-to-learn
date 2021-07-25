@@ -34,7 +34,7 @@
          else
          {
             // if the controller doesn't exist, redirect to 404 page
-            header('Location:' . URLROOT . '/pages/error');
+            header('location:' . URLROOT . '/pages/error');
          }
 
          // Requiring the controller and instantiating it

@@ -87,4 +87,41 @@
          return false;
       }
 
+      // TODO: function sometimes returns bool when no user is found
+      public function getSingleUserById(int $id) : stdClass
+      {
+         $this->db->query("SELECT " . PRIVATE_SQL_DATA . " FROM user WHERE id = :id");
+         $this->db->bind(":id", $id);
+         $result = $this->db->single();
+         return $result;
+      }
+
+      public function banUserById(int $id) : bool
+      {
+         $this->db->query("UPDATE user SET banned = 1 WHERE id = :id");
+         $this->db->bind(":id", $id);
+         if ($this->db->execute())
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      public function unbanUserById(int $id) : bool
+      {
+         $this->db->query("UPDATE user SET banned = 0 WHERE id = :id");
+         $this->db->bind(":id", $id);
+         if ($this->db->execute())
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+
    }

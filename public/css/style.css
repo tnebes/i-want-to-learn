@@ -12,6 +12,8 @@ html, body
 body
 {
    min-height: 100%;
+   display: flex;
+   flex-direction: column;
 }
 
 .section-landing
@@ -19,64 +21,58 @@ body
    background: url('../images/background3.jpg');
    background-color: rgba(0, 0, 0, 0.6);
    opacity: 1;
+   position: relative;
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
-   height: 100%;
+   height: 100vh;
    width: 100%;
+   display: flex;
+   align-items: center;
 }
 
 .wrapper-landing
 {
-   width: max-content;
+   margin: auto 0px;
    padding: 5% 10%;
-   position: relative;
    text-align: center;
-   margin: 0 auto;
-   top: 20%;
    /* make the text inside stand out */
    color: white;
-   font-size: 2em;
    font-weight: bold;
 }
 
 .wrapper-landing h1, h2, h3, h4, h5, h6
 {
    color: rgb(0, 0, 0);
+   display: flexbox;
 }
 
 .wrapper-landing h1
 {
    color: black;
-   font-size: 2em;
+   font-size: 5vw;
    font-weight: bold;
-   text-shadow: 0 0 2em #000;
    text-transform: uppercase;
 }
 
 .wrapper-landing h2
 {
+   font-family: 'Open Sans Condensed', sans-serif;
    color: black;
-   font-size: 1.5em;
-   font-weight: bold;
-   text-transform: uppercase;
+   font-size: 3vw;
+}
+
+.wrapper-landing p
+{
+   color: black;
+   font-weight: 100;
+   font-size: 2vw;
 }
 
 /*TODO: using <a> in the menu-text breaks the layout. This needs to be fixed. */
 .menu-text > a:nth-child(1)
 {
    color: #149e02;
-   /* Make the element fit within the div */
-   width: 100%;
-}
-
-/* The background image does not appear. TODO: this needs to be fixed. */
-.menu-text
-{
-   background: url("./assets/images/logo.png") no-repeat center center;
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: contain;
    /* Make the element fit within the div */
    width: 100%;
 }
@@ -111,13 +107,13 @@ body
    /* TODO: the position may cause issues later on */
    /* TODO: make the footer stick to the bottom of the body & html. */
    font-size: 18px;
+   margin-top: auto;
    position: relative;
    bottom: 0;
    background-color: var(--bg-col);
    padding-bottom: 0.5em;
    text-align: center;
    vertical-align: middle;
-   width: 100%;
 }
 
 .form
@@ -215,8 +211,8 @@ td.actions
 
 .links > li
 {
-   padding-left: 3ex;
-   padding-right: 3ex;
+   padding-left: 2ex;
+   padding-right: 2ex;
 }
 
 .tabs-panel.is-active > p:nth-child(1)
@@ -271,22 +267,21 @@ div.callout:nth-child(4) > pre:nth-child(2)
       display: none;
    }
 
-.table > tbody > tr > td > div > a > img
-{
-   max-width: 30px;
-   max-height: 30px;
-   margin: 5px 10px;
+   .table > tbody > tr > td > div > a > img
+   {
+      max-width: 30px;
+      max-height: 30px;
+      margin: 5px 10px;
+   }
 }
 
-
-}
-
-@media (max-width: 460px)
+@media (max-width: 480px)
 {
    .footer
    {
       display: flexbox;
-      height: 100%;
+      font-size: 2vh;
+      font-weight: bold;
    }
 
    .footer-content
@@ -305,8 +300,22 @@ div.callout:nth-child(4) > pre:nth-child(2)
    {
       min-width: none;
    }
-}
 
+   .wrapper-landing h1
+   {
+      font-size: 3em;
+   }
+
+   .wrapper-landing h2
+   {
+      font-size: 2em;
+   }
+
+   .wrapper-landing p
+   {
+      font-size: 1em;
+   }
+}
 
 
 

@@ -11,14 +11,17 @@
    <div class="section-landing">
       <div class="wrapper-landing">
          <h1>Learn everything.</h1>
-         <h2>Are you a in-depth learner?</h2>
-         <h3>Are you looking for a specific subject?</h3>
-         <h4>Are you looking for a specific course?</h4>
-         <h5>Are you looking for a specific book?</h5>
-         <h6>Are you looking for specific materials?</h6>
-         <h1>With IWTL, the sky is the limit</h1>
-         <h2>IWTL is a community-driven project</h2>
-         <h3>Read, learn and contribute.</h3>
+         <div class="row">
+            <div class="small-6 columns">
+            <h2>IWTL is a community-driven project for learning.</h2>
+               <p> IWTL is a place where people can learn from each other, and where they can share their knowledge and experience.</p>
+            </div>
+            <div class="small-6 columns">
+               <!-- example goes here. --><p>Example goes here.</p>
+            </div>
+         </div>            
+         <h2>Read, learn and contribute.</h2>
+         <a class="large button" href="<?php echo URLROOT?>/users/register">Join now.</a>
       </div>
    </div>
    <?php require_once APPROOT . '/views/includes/footer.php'; ?>
