@@ -156,7 +156,8 @@ class Users extends Controller
             if (empty($data['username'])) 
             {
                $data['usernameError'] = 'Username is required.';
-            } elseif (!preg_match($nameValidation, $data['username'])) 
+            }
+            elseif (!preg_match($nameValidation, $data['username'])) 
             {
                $data['usernameError'] = 'Username must contain only letters and numbers.';
             }
@@ -164,10 +165,13 @@ class Users extends Controller
             if (empty($data['email'])) 
             {
                $data['emailError'] = 'Email is required.';
-            } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) 
+            }
+            elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) 
             {
                $data['emailError'] = 'Email is not valid.';
-            } else {
+            }
+            else
+            {
                if ($this->userModel->findUserByEmail($data['email'])) 
                {
                   $data['emailError'] = 'Email is already in use.';
@@ -254,6 +258,12 @@ class Users extends Controller
        * of the mySQL server and php.
        */
 
+      if (!isAdmin())
+      {
+         // TODO: redirect
+         return;
+      }
+
       $data = func_get_args();
       if (!$data)
       {
@@ -262,31 +272,29 @@ class Users extends Controller
       }
       $user = $this->userModel->getSingleUserById((int) $data[0]);
       unset($data[0]);
-      
-      // if all is set, ban the user
-      if (isset($data[1]))
+
+      if (isset($_POST['confirm']) && filter_var($_POST['confirm'], FILTER_VALIDATE_BOOL))
       {
-      // I have a feeling this is a terrible way to do this.
-      $data[1] = filter_var($data[1], FILTER_VALIDATE_BOOL);
-         if (isset($data[1]) && $data[1] == true && isAdmin())
+         if ($user->banned)
          {
-            if ($user->banned != 0)
-            {
-               unset($data[1]);
-               $this->userModel->unbanUserById((int) $user->id);
-            }
-            else
-            {
-               unset($data[1]);
-               $this->userModel->banUserById((int) $user->id);
-            }
+            $this->userModel->unbanUserById((int) $user->id);
          }
-         else if (isset($data[1]) && !$data[1])
+         else
          {
-            
+            $this->userModel->banUserById((int) $user->id);
          }
+         header('Refresh:0');
+         return;
       }
       $this->view('users/ban', $user);
       return;
+   }
+
+   public function update() : void
+   {
+      // gets the arguments from the APP.php call
+      $data = func_get_args();
+
+      $this->view('users/update', $data);
    }
 }

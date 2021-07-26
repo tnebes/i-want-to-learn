@@ -13,9 +13,10 @@
          Are you sure you wish to <?php echo $data->banned != 0 ? 'unban' : 'ban' ?> <?php echo $data->username ?>?<br /> This action can be undone.
       </p>
       <div>
-         <!-- no need to use php tags -->
-         <a class="button alert" href="<?php echo URLROOT . '/users/ban/' . $data->id . '/true'?>">Yes</a>
-         <a class="button success" href="<?php echo URLROOT . '/users/ban/' . $data->id . '/false'?>">No</a>
+         <form method="POST">
+            <button type="submit" name="confirm" value="true" class="button alert">Yes</button>
+            <button type="submit" name="confirm" value="false" class="button success">No</button>
+         </form>
       </div>
    </div>
    <?php require_once APPROOT . '/views/includes/footer.php'; ?>
