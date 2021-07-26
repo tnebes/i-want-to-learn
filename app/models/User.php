@@ -124,4 +124,46 @@
          }
       }
 
+      public function deleteUserById(int $id) : bool
+      {
+         $this->db->query("DELETE FROM user WHERE id = :id");
+         $this->db->bind(":id", $id);
+         if ($this->db->execute())
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      public function updateUser($user) : bool
+      {
+         $this->db->query("UPDATE user SET username = :username,
+            email = :email,
+            registrationDate = :registrationDate,
+            role = :role,
+            lastLogin = :lastLogin,
+            banned = :banned,
+            dateBanned = :dateBanned            
+            WHERE id = :id");
+         $this->db->bind(":id", $user->id);
+         $this->db->bind(":username", $user->username);
+         $this->db->bind(":email", $user->email);
+         $this->db->bind(":registrationDate", $user->registrationDate);
+         $this->db->bind(":role", $user->role);
+         $this->db->bind(":lastLogin", $user->lastLogin);
+         $this->db->bind(":banned", $user->banned);
+         $this->db->bind(":dateBanned", $user->dateBanned);
+         if ($this->db->execute())
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+
    }

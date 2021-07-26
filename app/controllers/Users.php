@@ -250,14 +250,6 @@ class Users extends Controller
 
    public function ban() : void
    {
-      // expected arguments when passed include true to indicate immediate deletion without any additional confirmation
-      // TODO: once a user has been banned and the admin has confirmed the ban, the banned state of the user
-      // is not immediately synced with the database. The DB gives faulty data.
-      /**
-       * Massive TODO: make sure that the data passed to the view are 100% up to date. For now, the banned state of the user depends on the speed
-       * of the mySQL server and php.
-       */
-
       if (!isAdmin())
       {
          // TODO: redirect
@@ -272,20 +264,25 @@ class Users extends Controller
       }
       $user = $this->userModel->getSingleUserById((int) $data[0]);
       unset($data[0]);
-
-      if (isset($_POST['confirm']) && filter_var($_POST['confirm'], FILTER_VALIDATE_BOOL))
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
-         if ($user->banned)
+         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+         if (isset($_POST['confirm']) && filter_var($_POST['confirm'], FILTER_VALIDATE_BOOL))
          {
-            $this->userModel->unbanUserById((int) $user->id);
+            if ($user->banned)
+            {
+               $this->userModel->unbanUserById((int) $user->id);
+            }
+            else
+            {
+               $this->userModel->banUserById((int) $user->id);
+            }
+            header('Refresh:0');
+            return;
          }
-         else
-         {
-            $this->userModel->banUserById((int) $user->id);
-         }
-         header('Refresh:0');
-         return;
       }
+      
       $this->view('users/ban', $user);
       return;
    }
@@ -294,7 +291,76 @@ class Users extends Controller
    {
       // gets the arguments from the APP.php call
       $data = func_get_args();
+      if (!$data)
+      {
+         // TODO: redirect
+         return;
+      }
+      $userId = (int) $data[0];
+      $user = $this->userModel->getSingleUserById($userId);
+      unset($data[0]);
+      
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+         if (filter_var($_POST['update']))
+         {
+            //TODO: there must be a better way to do this
+            $updatedUser = new User();
+            $updatedUser->id = $user->id;
+            $updatedUser->username = $_POST['username'];
+            $updatedUser->email = $_POST['email'];
+            $updatedUser->registrationDate = $_POST['registrationDate'];            
+            $updatedUser->role = $_POST['role'];
+            $updatedUser->lastLogin = $_POST['lastLogin'];
+            $updatedUser->banned = $_POST['banned'];
+            $updatedUser->dateBanned = $_POST['dateBanned'];
 
-      $this->view('users/update', $data);
+            if ($this->userModel->updateUser($updatedUser))
+            {
+               header('location: ' . URLROOT . '/users/profile/' . $userId);
+               return;
+            }
+            else
+            {
+               // TODO: lmao
+               die('Something went wrong.');
+            }
+         }
+      }
+
+      $this->view('users/update', $user);
    }
+
+   public function delete() : void
+   {
+      // TODO: add a data section for explaining why a user cannot be deleted.
+      if (!isAdmin())
+      {
+         return;
+      }
+
+      $data = func_get_args();
+      if (!$data)
+      {
+         return;
+      }
+      $user = $this->userModel->getSingleUserById((int) $data[0]);
+      unset($data[0]);
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+         if (isset($_POST['confirm']) && filter_var($_POST['confirm'], FILTER_VALIDATE_BOOL))
+         {
+            $userId = (int) $user->id;
+            $this->userModel->deleteUserById($userId);
+            // TODO: temporary redirect until i figure out how to do it properly
+            header('location: ' . URLROOT . '/users');
+            return;
+         }
+      }
+      $this->view('users/delete', $user);      
+   }
+
 }

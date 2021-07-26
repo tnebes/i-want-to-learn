@@ -7,7 +7,66 @@
 </head>
 <body>
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
-   <h1>Update</h1>
+   <h1><?php echo $data->username?>'s profile</h1>
+   <div>
+      <a href="<?php echo URLROOT . '/users/profile/' . $data->id ?>" class="success button">View user</a>
+      <a href="<?php echo URLROOT . '/users/delete/' . $data->id ?>" class="alert button">Delete user</a>
+      <a href="<?php echo URLROOT . '/users/ban/' . $data->id ?>" class="warning button">Ban user</a>
+   </div>
+
+   <?php debugVar($_POST)?>
+   <form method="post" action="<?php echo URLROOT . '/users/update/' . $data->id ?>">
+      <table class="table">
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Value</th>
+               <th>New Value</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>Username</td>
+               <td><?php echo $data->username ?></td>
+               <td><input type="text" name="username" value="<?= $data->username ?>"></td>
+            </tr>
+            <tr>
+               <td>Email</td>
+               <td><?php echo $data->email ?></td>
+               <td><input type="email" name="email" value="<?= $data->email ?>"></td>
+            </tr>
+            <tr>
+               <td>Registration date</td>
+               <td><?php echo $data->registrationDate ?></td>
+               <!-- change type to date and make the php fill it out with proper values -->
+               <td><input type="text" name="registrationDate" value="<?= $data->registrationDate ?>"></td>
+            </tr>
+            <tr>
+               <td>Role</td>
+               <td><?php echo $data->role ?></td>
+               <td><input type="text" name="role" value="<?= $data->role ?>"></td>
+            </tr>
+            <tr>
+               <td>Last login</td>
+               <td><?php echo $data->lastLogin ?></td>
+               <!-- change type to date and make the php fill it out with proper values -->
+               <td><input type="text" name="lastLogin" value="<?= $data->lastLogin ?>"></td>
+            </tr>
+            <tr>
+               <td>Banned</td>
+               <td><?php echo $data->banned ?></td>
+               <td><input type="checkbox" name="banned" value="1" <?php if ($data->banned) echo 'checked'; ?>></td>
+            </tr>
+            <tr>
+               <td>Date banned</td>
+               <td><?php echo $data->dateBanned ?></td>
+               <td><input type="text" name="dateBanned" value="<?= $data->dateBanned ?>"></td>
+            </tr>
+         </tbody>
+      </table>
+      <!-- button to POST the changes to the database -->
+      <input type="submit" name="update" value="Update" class="success button">
+   </form>
    <?php require_once APPROOT . '/views/includes/footer.php'; ?>
    <?php require_once APPROOT . '/views/includes/javascript.php'; ?>
 </body>

@@ -4,3 +4,10 @@
    {
       header('Location: ' . URLROOT . $path);
    }
+
+   function debugVar(mixed $var) : void
+   {
+      echo '<pre>';
+      var_dump($var);
+      echo '</pre>';
+   }
