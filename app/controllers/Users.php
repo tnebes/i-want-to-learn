@@ -35,6 +35,7 @@ class Users extends Controller
    public function login() : void
    {
       // TODO: redirect the user away from this page when they are already logged in.
+      // TODO: redirect does not work after logging in.
       if (isLoggedIn())
       {
          redirect('/');
@@ -74,9 +75,12 @@ class Users extends Controller
          if (empty($data['usernameError']) && empty($data['passwordError'])) 
          {
             $loggedInUser = $this->userModel->login($data['username'], $data['password']);
-            if ($loggedInUser) {
+            if ($loggedInUser)
+            {
                $this->createUserSession($loggedInUser);
-            } else {
+            }
+            else
+            {
                $data['passwordError'] = 'Invalid username or password.';
                $this->view('users/login', $data);
                // TODO: check whether its necessary to return
@@ -243,6 +247,13 @@ class Users extends Controller
    public function ban() : void
    {
       // expected arguments when passed include true to indicate immediate deletion without any additional confirmation
+      // TODO: once a user has been banned and the admin has confirmed the ban, the banned state of the user
+      // is not immediately synced with the database. The DB gives faulty data.
+      /**
+       * Massive TODO: make sure that the data passed to the view are 100% up to date. For now, the banned state of the user depends on the speed
+       * of the mySQL server and php.
+       */
+
       $data = func_get_args();
       if (!$data)
       {
@@ -251,24 +262,29 @@ class Users extends Controller
       }
       $user = $this->userModel->getSingleUserById((int) $data[0]);
       unset($data[0]);
-
+      
       // if all is set, ban the user
-      if (isset($data[1]) && $data[1] == true && isAdmin())
+      if (isset($data[1]))
       {
-         if ($user->banned != 0)
+      // I have a feeling this is a terrible way to do this.
+      $data[1] = filter_var($data[1], FILTER_VALIDATE_BOOL);
+         if (isset($data[1]) && $data[1] == true && isAdmin())
          {
-            unset($data[1]);
-            $this->userModel->unbanUserById((int) $user->id);
+            if ($user->banned != 0)
+            {
+               unset($data[1]);
+               $this->userModel->unbanUserById((int) $user->id);
+            }
+            else
+            {
+               unset($data[1]);
+               $this->userModel->banUserById((int) $user->id);
+            }
          }
-         else
+         else if (isset($data[1]) && !$data[1])
          {
-            unset($data[1]);
-            $this->userModel->banUserById((int) $user->id);
+            
          }
-      }
-      else if (isset($data[1]) && !$data[1])
-      {
-         
       }
       $this->view('users/ban', $user);
       return;

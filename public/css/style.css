@@ -145,6 +145,12 @@ body
    display: inline;
 }
 
+.invalidFeedback
+{
+   color: red;
+   font-weight: bold;
+}
+
 thead > tr > th:nth-last-child(1)
 {
    width: 200px;
