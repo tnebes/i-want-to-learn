@@ -79,7 +79,3 @@ alter table userSuggestionReview
 	add foreign key (user) references user(id);
 alter table userSuggestionReview
 	add foreign key (suggestion) references suggestion(id);
-
-
-
-

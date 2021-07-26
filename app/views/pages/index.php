@@ -25,6 +25,11 @@
          <a class="large button" href="<?php echo URLROOT?>/users/register">Join now.</a>
       </div>
    </div>
+   <div class="callout large primary text-center">
+      <p>Code available at:</p>
+      <a class="link" href="https://github.com/tnebes/i-want-to-learn"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="GitHub" class="left" style="height: 10vw"></a>
+   </div>
+
    <?php require_once APPROOT . '/views/includes/footer.php'; ?>
    <?php require_once APPROOT . '/views/includes/javascript.php'; ?>
 </body>
