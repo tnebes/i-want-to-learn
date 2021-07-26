@@ -6,7 +6,7 @@
 <div class="top-bar" id="example-menu">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">IWTL</li>
+      <a href="<?php echo URLROOT ?>"><img src=<?php echo URLROOT . '/public/images/logo2.png'?> class="logo" alt="logo"></a>
       <li class="has-submenu">
         <a href="#0">Content</a>
         <ul class="submenu menu vertical" data-submenu>

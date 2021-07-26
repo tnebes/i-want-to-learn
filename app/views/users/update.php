@@ -9,12 +9,11 @@
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
    <h1><?php echo $data->username?>'s profile</h1>
    <div>
-      <a href="<?php echo URLROOT . '/users/profile/' . $data->id ?>" class="success button">View user</a>
+      <a href="<?php echo URLROOT . '/users/profile/' . $data->id ?>" class="button">View user</a>
       <a href="<?php echo URLROOT . '/users/delete/' . $data->id ?>" class="alert button">Delete user</a>
       <a href="<?php echo URLROOT . '/users/ban/' . $data->id ?>" class="warning button">Ban user</a>
    </div>
 
-   <?php debugVar($_POST)?>
    <form method="post" action="<?php echo URLROOT . '/users/update/' . $data->id ?>">
       <table class="table">
          <thead>

@@ -10,6 +10,7 @@
    <!-- foundation index page -->
    <div class="section-landing">
       <div class="wrapper-landing">
+         <img src=<?php echo URLROOT . '/public/images/logo.png'?> alt="logo" href="<?php echo URLROOT ?>">
          <h1>Learn everything.</h1>
          <div class="row">
             <div class="small-6 columns">
@@ -17,7 +18,7 @@
                <p> IWTL is a place where people can learn from each other, and where they can share their knowledge and experience.</p>
             </div>
             <div class="small-6 columns">
-               <!-- example goes here. --><p>Example goes here.</p>
+               <!-- example goes here. -->
             </div>
          </div>            
          <h2>Read, learn and contribute.</h2>
