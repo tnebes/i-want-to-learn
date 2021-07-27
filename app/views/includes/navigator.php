@@ -22,7 +22,7 @@
       <li><a href="<?php echo URLROOT ?>/options/">Options</a></li>
       <!-- add a link to the user's profile -->
       <li><a href="<?php echo URLROOT . '/users/profile/' . $_SESSION['user_id'] ?>">My Profile</a></li>
-      <?php if(isAdmin()) echo '<li><a href="' . URLROOT . '/er">ER diagram</a></li>' ?>
+      <?php if(isLoggedIn()) echo '<li><a href="' . URLROOT . '/er">ER diagram</a></li>' ?>
       <li><a href="<?php echo URLROOT ?>/users/logout">Logout <span class="username"><?php echo $_SESSION['username'] ?></a></span></li>
       <?php endif;?>
     </ul>

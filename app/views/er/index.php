@@ -12,7 +12,8 @@
          <a href="<?php echo URLROOT?>/er/image"><h1>View the diagram here.</h1></a>
       <pre>
          <?php
-            $file = fopen(APPROOT . '/erdiagram/i_want_to_learn.sql', 'r');
+            $filepath = APPROOT . DIRECTORY_SEPARATOR . 'erdiagram' . DIRECTORY_SEPARATOR . 'i_want_to_learn.sql';
+            $file = fopen($filepath, 'r');
             if ($file)
             {
                //echo the file line by line
