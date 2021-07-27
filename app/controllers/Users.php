@@ -278,7 +278,14 @@ class Users extends Controller
          $data['registrationDate'] = $_POST['registrationDate'];
          $data['role'] = trim($_POST['role']);
          $data['lastLogin'] = $_POST['lastLogin'];
-         $data['banned'] = $_POST['banned'];
+         if (isset($_POST['banned']))
+         {
+            $data['banned'] = $_POST['banned'];
+         }
+         else
+         {
+            $data['banned'] = null; // TODO: fix this cursed workaround
+         }
          $data['dateBanned'] = $_POST['dateBanned'];
 
          if (isset($_POST['update']))

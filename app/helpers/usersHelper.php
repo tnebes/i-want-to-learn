@@ -73,11 +73,29 @@
 
    function validateDate(string $date) : string
    {
+      $dateValidation = "/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/";
+      if (!$date)
+      {
+         return 'Date is required.';
+      }
+      elseif (!preg_match($dateValidation, $date))
+      {
+         return 'Date is not valid.';
+      }
       return '';
    }
 
    function validateRole(string $role) : string
    {
+      $roleValidation = "/^[0-9]*$/";
+      if ($role == '') // TODO: can't use empty because it registers 0 as empty.
+      {
+         return 'Role is required.';
+      }
+      elseif (!preg_match($roleValidation, $role))
+      {
+         return 'Role must be a number from 0 to 9';
+      }
       return '';
    }
 
