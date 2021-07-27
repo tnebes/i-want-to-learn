@@ -77,7 +77,7 @@ class Users extends Controller
             $loggedInUser = $this->userModel->login($data['username'], $data['password']);
             if ($loggedInUser)
             {
-               $this->createUserSession($loggedInUser);
+               createUserSession($loggedInUser);
             }
             else
             {
@@ -99,14 +99,6 @@ class Users extends Controller
             ];
       }
       $this->view('users/login', $data);
-   }
-
-   public function createUserSession($user): void
-   {
-      $_SESSION['user_id'] = $user->id;
-      $_SESSION['username'] = $user->username;
-      $_SESSION['email'] = $user->email;
-      $_SESSION['role'] = $user->role;
    }
 
    public function register() : void
@@ -307,7 +299,16 @@ class Users extends Controller
       }
       $userId = (int) $data[0];
       $user = $this->userModel->getSingleUserById($userId);
-      unset($data[0]);
+      $data = 
+      [
+         'usernameError' => '',
+         'emailError' => '',
+         'registrationDateError' => '',
+         'roleError' => '',
+         'lastLoginError' => '',
+         'bannedError' => '',
+         'dateBannedError' => ''
+      ];
       
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
@@ -317,13 +318,41 @@ class Users extends Controller
          {
             //TODO: there must be a better way to do this
             $updatedUser = clone $user;
-            $updatedUser->username = $_POST['username'];
-            $updatedUser->email = $_POST['email'];
-            $updatedUser->registrationDate = $_POST['registrationDate'];            
-            $updatedUser->role = $_POST['role'];
+            $updatedUser->username = trim($_POST['username']);
+            if (validateUsername(trim($_POST['username'])))
+            {
+               $data['usernameError'] = 'Username is not valid.';
+            }
+            $updatedUser->email = trim($_POST['email']);
+            if (validateEmail(trim($_POST['email'])))
+            {
+               $data['emailError'] = 'Email is not valid.';
+            }
+            $updatedUser->registrationDate = $_POST['registrationDate'];
+            if (validateDate($_POST['registrationDate']))
+            {
+               $data['registrationDateError'] = 'Registration date is not valid.';
+            }
+            $updatedUser->role = trim($_POST['role']);
+            if (validateRole(trim($_POST['role'])))
+            {
+               $data['roleError'] = 'Role is not valid.';
+            }
             $updatedUser->lastLogin = $_POST['lastLogin'];
-            $updatedUser->banned = $_POST['banned'];
+            if (validateDate($_POST['lastLogin']))
+            {
+               $data['lastLoginError'] = 'Last login is not valid.';
+            }
+            $updatedUser->banned = trim($_POST['banned']);
+            if (validateBanned(trim($_POST['banned'])))
+            {
+               $data['bannedError'] = 'Banned is not valid.';
+            }
             $updatedUser->dateBanned = $_POST['dateBanned'];
+            if (validateDate($_POST['dateBanned']))
+            {
+               $data['dateBannedError'] = 'Date banned is not valid.';
+            }
 
             if ($this->userModel->updateUser($updatedUser))
             {
