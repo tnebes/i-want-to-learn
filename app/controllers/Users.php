@@ -142,17 +142,21 @@ class Users extends Controller
                   'confirmPasswordError' => '',
                ];
 
-            $nameValidation = "/^[a-zA-Z0-9]*$/";
             $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
             // add check for whether the username is taken
-            if (empty($data['username'])) 
+            switch(validateUsername($_POST['username']))
             {
-               $data['usernameError'] = 'Username is required.';
-            }
-            elseif (!preg_match($nameValidation, $data['username'])) 
-            {
-               $data['usernameError'] = 'Username must contain only letters and numbers.';
+               case 1:
+                  $data['usernameError'] = 'Username is already taken.';
+                  break;
+               case 2:
+                  $data['usernameError'] = 'Username is required.';
+                  break;
+               case 3:
+                  $data['usernameError'] = 'Username must contain only letters and numbers.';
+                  break;
+               default: die('Something went terribly wrong.');
             }
 
             if (empty($data['email'])) 
