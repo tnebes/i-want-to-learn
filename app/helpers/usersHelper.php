@@ -2,44 +2,86 @@
 
    /**
     * @param $username
-    * @return 0 for valid, 1 for username already exists, 2 for no username, 3 for invalid username
+    * @return string for an error if exists. Empty string if no error.
     */
-   function validateUsername(string $username) : int
+   function validateUsername(string $username) : string
    {
       // TODO: if the username already exists...
       $nameValidation = "/^[a-zA-Z0-9]*$/";
-      if (!$username) 
+      if (!$username)
       {
-         return 2;
+         return 'Username is required.';
       }
-      elseif (!preg_match($nameValidation, $username)) 
+      elseif (!preg_match($nameValidation, $username))
       {
-         return 3;
+         return 'Username can only contain letters and numbers.';
       }
-      return 0;
+      elseif (strlen($username) < 3)
+      {
+         return 'Username must be at least 3 characters long.';
+      }
+      return '';
    }
 
-   function validateEmail(string $email) : int
+   function validateEmail(string $email, $userModel) : string
    {
-
+      if (!$email) 
+      {
+         return 'Email is required.';
+      }
+      elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+      {
+         return 'Email is not valid.';
+      }
+      elseif ($userModel->findUserByEmail($email))
+      {
+         return 'Email is already in use.';
+      }
+      return '';
    }
 
-   function validatePassword(string $password) : int
+   function validatePassword(string $password) : string
    {
-
+      $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+      if (!$password) 
+      {
+         return 'Password is required.';
+      }
+      elseif (strlen($password) < 7) 
+      {
+         return 'Password must be at least 8 characters.';
+      }
+      elseif (preg_match($passwordValidation, $password)) 
+      {
+         return 'Password must contain at least one numeric value';
+      }
+      return '';
    }
 
-   function validateDate(string $date) : int
+   function validateConfirmPassword(string $confirmPassword, string $password) : string
    {
-
+      if (!$confirmPassword) 
+      {
+         return 'Confirm password is required.';
+      }
+      elseif ($confirmPassword != $password) 
+      {
+         return 'Password and confirm password must match.';
+      }
+      return '';
    }
 
-   function validateRole(string $role) : int
+   function validateDate(string $date) : string
    {
-
+      return '';
    }
 
-   function validateBanned(string $banned) : int
+   function validateRole(string $role) : string
    {
+      return '';
+   }
 
+   function validateBanned(?string $banned) : string // sometimes null is passed in
+   {
+      return '';
    }

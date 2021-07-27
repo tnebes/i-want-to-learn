@@ -142,59 +142,12 @@ class Users extends Controller
                   'confirmPasswordError' => '',
                ];
 
-            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
             // add check for whether the username is taken
-            switch(validateUsername($_POST['username']))
-            {
-               case 1:
-                  $data['usernameError'] = 'Username is already taken.';
-                  break;
-               case 2:
-                  $data['usernameError'] = 'Username is required.';
-                  break;
-               case 3:
-                  $data['usernameError'] = 'Username must contain only letters and numbers.';
-                  break;
-               default: die('Something went terribly wrong.');
-            }
-
-            if (empty($data['email'])) 
-            {
-               $data['emailError'] = 'Email is required.';
-            }
-            elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) 
-            {
-               $data['emailError'] = 'Email is not valid.';
-            }
-            else
-            {
-               if ($this->userModel->findUserByEmail($data['email'])) 
-               {
-                  $data['emailError'] = 'Email is already in use.';
-               }
-            }
-
-            //validate password
-            if (empty($data['password'])) 
-            {
-               $data['passwordError'] = 'Password is required.';
-            } elseif (strlen($data['password']) < 7) 
-            {
-               $data['passwordError'] = 'Password must be at least 8 characters.';
-            } elseif (preg_match($passwordValidation, $data['password'])) 
-            {
-               $data['passwordError'] = 'Password must contain at least one numeric value';
-            }
-
-            //validate confirm password
-            if (empty($data['confirmPassword'])) 
-            {
-               $data['confirmPasswordError'] = 'Confirm password is required.';
-            } elseif ($data['password'] != $data['confirmPassword']) 
-            {
-               $data['confirmPasswordError'] = 'Password and confirm password must match.';
-            }
+            $data['usernameError'] = validateUsername($data['username']);
+            $data['emailError'] = validateEmail($data['email'], $this->userModel);
+            $data['passwordError'] = validatePassword($data['password']);
+            $data['confirmPasswordError'] = validateConfirmPassword($data['confirmPassword'], $data['password']);
 
             // make sure that errors are empty
             if (empty($data['usernameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) 
@@ -292,19 +245,21 @@ class Users extends Controller
    {
       if (!isAdmin())
       {
-         die('You are not an admin');
+         // TODO: add redirect
+         die('You are not an admin.');
       }
       // gets the arguments from the APP.php call
       $data = func_get_args();
       if (!$data)
       {
          // TODO: redirect
-         return;
+         die('Some arguments required.');
       }
       $userId = (int) $data[0];
       $user = $this->userModel->getSingleUserById($userId);
       $data = 
       [
+         'user' => $user,
          'usernameError' => '',
          'emailError' => '',
          'registrationDateError' => '',
@@ -317,61 +272,52 @@ class Users extends Controller
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
          $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-         var_dump($_POST);
+         // add to $data array another array
+         $data['username'] = trim($_POST['username']);
+         $data['email'] = trim($_POST['email']);
+         $data['registrationDate'] = $_POST['registrationDate'];
+         $data['role'] = trim($_POST['role']);
+         $data['lastLogin'] = $_POST['lastLogin'];
+         $data['banned'] = $_POST['banned'];
+         $data['dateBanned'] = $_POST['dateBanned'];
+
          if (isset($_POST['update']))
          {
             //TODO: there must be a better way to do this
             $updatedUser = clone $user;
-            $updatedUser->username = trim($_POST['username']);
-            if (validateUsername(trim($_POST['username'])))
-            {
-               $data['usernameError'] = 'Username is not valid.';
-            }
-            $updatedUser->email = trim($_POST['email']);
-            if (validateEmail(trim($_POST['email'])))
-            {
-               $data['emailError'] = 'Email is not valid.';
-            }
-            $updatedUser->registrationDate = $_POST['registrationDate'];
-            if (validateDate($_POST['registrationDate']))
-            {
-               $data['registrationDateError'] = 'Registration date is not valid.';
-            }
-            $updatedUser->role = trim($_POST['role']);
-            if (validateRole(trim($_POST['role'])))
-            {
-               $data['roleError'] = 'Role is not valid.';
-            }
-            $updatedUser->lastLogin = $_POST['lastLogin'];
-            if (validateDate($_POST['lastLogin']))
-            {
-               $data['lastLoginError'] = 'Last login is not valid.';
-            }
-            $updatedUser->banned = trim($_POST['banned']);
-            if (validateBanned(trim($_POST['banned'])))
-            {
-               $data['bannedError'] = 'Banned is not valid.';
-            }
-            $updatedUser->dateBanned = $_POST['dateBanned'];
-            if (validateDate($_POST['dateBanned']))
-            {
-               $data['dateBannedError'] = 'Date banned is not valid.';
-            }
+            $updatedUser->username = $data['username'];
+            $updatedUser->email = $data['email'];
+            $updatedUser->registrationDate = $data['registrationDate'];            
+            $updatedUser->role = $data['role'];
+            $updatedUser->lastLogin = $data['lastLogin'];
+            $updatedUser->banned = $data['banned'];
+            $updatedUser->dateBanned = $data['dateBanned'];
 
-            if ($this->userModel->updateUser($updatedUser))
+            $data['usernameError'] = validateUsername($updatedUser->username);
+            $data['emailError'] = validateEmail($updatedUser->email, $this->userModel);
+            $data['registrationDateError'] = validateDate($updatedUser->registrationDate);
+            $data['roleError'] = validateRole($updatedUser->role);
+            $data['lastLoginError'] = validateDate($updatedUser->lastLogin);
+            $data['bannedError'] = validateBanned($updatedUser->banned);
+            $data['dateBannedError'] = validateDate($updatedUser->dateBanned);
+            
+            // check if the errors are empty
+            if (empty($data['usernameError']) && empty($data['emailError']) && empty($data['registrationDateError']) && empty($data['roleError']) && empty($data['lastLoginError']) && empty($data['bannedError']) && empty($data['dateBannedError']))
             {
-               header('location: ' . URLROOT . '/users/profile/' . $userId);
-               return;
-            }
-            else
-            {
-               // TODO: lmao
-               die('Something went wrong.');
+               if ($this->userModel->updateUser($updatedUser))
+               {
+                  header('location: ' . URLROOT . '/users/profile/' . $userId);
+                  return;
+               }
+               else
+               {
+                  // TODO: lmao
+                  die('Something went wrong.');
+               }
             }
          }
       }
-
-      $this->view('users/update', $user);
+      $this->view('users/update', $data);
    }
 
    public function delete() : void
