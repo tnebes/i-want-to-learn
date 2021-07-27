@@ -232,6 +232,10 @@ class Users extends Controller
 
    public function profile() : void
    {
+      if (!isLoggedIn())
+      {
+         return;
+      }
       // gets the arguments from the APP.php call
       $data = func_get_args();
       if (!$data)
@@ -289,6 +293,10 @@ class Users extends Controller
 
    public function update() : void
    {
+      if (!isAdmin())
+      {
+         die('You are not an admin');
+      }
       // gets the arguments from the APP.php call
       $data = func_get_args();
       if (!$data)
@@ -303,11 +311,11 @@ class Users extends Controller
       if ($_SERVER['REQUEST_METHOD'] == 'POST')
       {
          $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-         if (filter_var($_POST['update']))
+         var_dump($_POST);
+         if (isset($_POST['update']))
          {
             //TODO: there must be a better way to do this
-            $updatedUser = new User();
-            $updatedUser->id = $user->id;
+            $updatedUser = clone $user;
             $updatedUser->username = $_POST['username'];
             $updatedUser->email = $_POST['email'];
             $updatedUser->registrationDate = $_POST['registrationDate'];            
@@ -337,7 +345,7 @@ class Users extends Controller
       // TODO: add a data section for explaining why a user cannot be deleted.
       if (!isAdmin())
       {
-         return;
+         die('You are not an admin');
       }
 
       $data = func_get_args();

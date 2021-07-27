@@ -1,7 +1,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?=APP_NAME?></title>
+<title><?php echo APP_NAME?></title>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/foundation.css">
 <!-- ensures that the stylesheet gets loaded every time the user loads the page -->
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css?t=<?php echo time();?>">

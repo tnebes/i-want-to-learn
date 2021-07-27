@@ -18,5 +18,17 @@
             die('You need to be logged in to view this page.');
          }
       }
+
+      public function image() : void
+      {
+         if(isLoggedIn())
+         {
+            $this->view('er/image');
+         }
+         else
+         {
+            die('You need to be logged in to view this page.');
+         }
+      }
       
    }

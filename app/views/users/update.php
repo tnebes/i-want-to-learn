@@ -27,29 +27,29 @@
             <tr>
                <td>Username</td>
                <td><?php echo $data->username ?></td>
-               <td><input type="text" name="username" value="<?= $data->username ?>"></td>
+               <td><input type="text" name="username" value="<?php echo $data->username ?>"></td>
             </tr>
             <tr>
                <td>Email</td>
                <td><?php echo $data->email ?></td>
-               <td><input type="email" name="email" value="<?= $data->email ?>"></td>
+               <td><input type="email" name="email" value="<?php echo $data->email ?>"></td>
             </tr>
             <tr>
                <td>Registration date</td>
-               <td><?php echo $data->registrationDate ?></td>
+               <td><?php echo date('Y/m/d', strtotime($data->registrationDate)) ?></td>
                <!-- change type to date and make the php fill it out with proper values -->
-               <td><input type="text" name="registrationDate" value="<?= $data->registrationDate ?>"></td>
+               <td><input type="date" name="registrationDate" value="<?php echo date('Y/m/d', strtotime($data->registrationDate)) ?>"></td>
             </tr>
             <tr>
                <td>Role</td>
                <td><?php echo $data->role ?></td>
-               <td><input type="text" name="role" value="<?= $data->role ?>"></td>
+               <td><input type="text" name="role" value="<?php echo $data->role ?>"></td>
             </tr>
             <tr>
                <td>Last login</td>
-               <td><?php echo $data->lastLogin ?></td>
+               <td><?php echo date('Y/m/d', strtotime($data->lastLogin)) ?></td>
                <!-- change type to date and make the php fill it out with proper values -->
-               <td><input type="text" name="lastLogin" value="<?= $data->lastLogin ?>"></td>
+               <td><input type="date" name="lastLogin" value="<?php echo date('Y/m/d', strtotime($data->lastLogin)) ?>"></td>
             </tr>
             <tr>
                <td>Banned</td>
@@ -58,12 +58,11 @@
             </tr>
             <tr>
                <td>Date banned</td>
-               <td><?php echo $data->dateBanned ?></td>
-               <td><input type="text" name="dateBanned" value="<?= $data->dateBanned ?>"></td>
+               <td><?php echo date('Y/m/d',strtotime($data->dateBanned))?></td>
+               <td><input type="text" name="dateBanned" value="<?php echo date('Y/m/d',strtotime($data->dateBanned)) ?>"></td>
             </tr>
          </tbody>
       </table>
-      <!-- button to POST the changes to the database -->
       <input type="submit" name="update" value="Update" class="success button">
    </form>
    <?php require_once APPROOT . '/views/includes/footer.php'; ?>

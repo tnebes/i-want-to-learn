@@ -7,7 +7,6 @@
 </head>
 <body>
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
-   <!-- foundation index page -->
    <div class="section-landing">
       <div class="wrapper-landing">
          <img src=<?php echo URLROOT . '/public/images/logo.png'?> alt="logo" href="<?php echo URLROOT ?>">
