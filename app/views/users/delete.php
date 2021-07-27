@@ -8,9 +8,9 @@
 <body>
    <?php require_once APPROOT . '/views/includes/navigator.php'; ?>
    <div class="callout large alert">
-      <h1><?php echo $data->banned != 0 ? 'Unban' : 'Ban' ?> <?php echo $data->username ?></h1>
+      <h1>Delete <?php echo $data->username ?></h1>
       <p>
-         Are you sure you wish to <?php echo $data->banned != 0 ? 'unban' : 'ban' ?> <?php echo $data->username ?>?<br /> This action can be undone.
+         Are you sure you wish to delete <?php echo $data->username ?>?<br /> This action cannot be undone.
       </p>
       <div>
          <form method="POST">

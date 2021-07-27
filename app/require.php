@@ -6,6 +6,7 @@
    require_once 'core/Database.php';
    require_once 'helpers/sessionHelper.php';
    require_once 'helpers/userHelper.php';
+   require_once 'helpers/usersHelper.php';
    require_once 'helpers/functions.php';
 
    // Instantiate the App class

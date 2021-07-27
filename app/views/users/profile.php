@@ -20,7 +20,7 @@
                   echo '<a class="button warning" href=' . URLROOT . '/users/delete/' . $data->id . '>Delete User</a>';
                   echo '<a class="button alert" href=' . URLROOT . '/users/ban/' . $data->id . '>Ban User</a>';
                }
-               ?>            
+               ?>
             </div>
             <table class="table table-striped">
                <thead>

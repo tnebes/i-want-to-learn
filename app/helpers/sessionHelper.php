@@ -15,3 +15,11 @@
       }
       return false;
    }
+
+   function createUserSession($user): void
+   {
+      $_SESSION['user_id'] = $user->id;
+      $_SESSION['username'] = $user->username;
+      $_SESSION['email'] = $user->email;
+      $_SESSION['role'] = $user->role;
+   }

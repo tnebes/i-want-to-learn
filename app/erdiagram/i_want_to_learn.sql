@@ -9,9 +9,9 @@ create table user(
     email varchar(255) not null,
     registrationDate datetime not null default current_timestamp,
     `role` tinyint not null default 0, -- 0 - user, 1 - admin
-    lastLogin datetime,
+    lastLogin datetime default current_timestamp,
     banned bit not null default 0,
-    dateBanned datetime
+    dateBanned datetime default current_timestamp
 );
 
 create table topic(
@@ -79,7 +79,3 @@ alter table userSuggestionReview
 	add foreign key (user) references user(id);
 alter table userSuggestionReview
 	add foreign key (suggestion) references suggestion(id);
-
-
-
-
