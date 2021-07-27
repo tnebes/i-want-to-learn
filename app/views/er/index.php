@@ -12,7 +12,7 @@
          <a href="<?php echo URLROOT?>/er/image"><h1>View the diagram here.</h1></a>
       <pre>
          <?php
-            $file = fopen(APPROOT . '\erdiagram\i_want_to_learn.sql', 'r');
+            $file = fopen(APPROOT . '/erdiagram/i_want_to_learn.sql', 'r');
             if ($file)
             {
                //echo the file line by line
