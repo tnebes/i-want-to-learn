@@ -153,6 +153,7 @@ class Users extends Controller
             $nameValidation = "/^[a-zA-Z0-9]*$/";
             $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
+            // add check for whether the username is taken
             if (empty($data['username'])) 
             {
                $data['usernameError'] = 'Username is required.';

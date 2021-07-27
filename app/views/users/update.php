@@ -36,9 +36,9 @@
             </tr>
             <tr>
                <td>Registration date</td>
-               <td><?php echo date('Y/m/d', strtotime($data->registrationDate)) ?></td>
+               <td><?php echo date('Y-m-d', strtotime($data->registrationDate)) ?></td>
                <!-- change type to date and make the php fill it out with proper values -->
-               <td><input type="date" name="registrationDate" value="<?php echo date('Y/m/d', strtotime($data->registrationDate)) ?>"></td>
+               <td><input type="date" name="registrationDate" value="<?php echo date('Y-m-d', strtotime($data->registrationDate)) ?>"></td>
             </tr>
             <tr>
                <td>Role</td>
@@ -47,9 +47,9 @@
             </tr>
             <tr>
                <td>Last login</td>
-               <td><?php echo date('Y/m/d', strtotime($data->lastLogin)) ?></td>
+               <td><?php echo date('Y-m-d', strtotime($data->lastLogin)) ?></td>
                <!-- change type to date and make the php fill it out with proper values -->
-               <td><input type="date" name="lastLogin" value="<?php echo date('Y/m/d', strtotime($data->lastLogin)) ?>"></td>
+               <td><input type="date" name="lastLogin" value="<?php echo date('Y-m-d', strtotime($data->lastLogin)) ?>"></td>
             </tr>
             <tr>
                <td>Banned</td>
@@ -58,8 +58,8 @@
             </tr>
             <tr>
                <td>Date banned</td>
-               <td><?php echo date('Y/m/d',strtotime($data->dateBanned))?></td>
-               <td><input type="text" name="dateBanned" value="<?php echo date('Y/m/d',strtotime($data->dateBanned)) ?>"></td>
+               <td><?php echo date('Y-m-d', strtotime($data->dateBanned))?></td>
+               <td><input type="date" name="dateBanned" value="<?php echo date('Y-m-d', strtotime($data->dateBanned)) ?>"></td>
             </tr>
          </tbody>
       </table>
