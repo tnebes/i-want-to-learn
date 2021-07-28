@@ -171,7 +171,7 @@ class Users extends Controller
       unset($_SESSION['username']);
       unset($_SESSION['email']);
       unset($_SESSION['role']);
-      header('location: ' . URLROOT . '/users/login');
+      redirect('/');
    }
 
    public function profile() : void
@@ -304,7 +304,7 @@ class Users extends Controller
             {
                if ($this->userModel->updateUser($updatedUser))
                {
-                  header('location: ' . URLROOT . '/users/profile/' . $userId);
+                  redirect('user/profile' . $userId);
                   return;
                }
                else

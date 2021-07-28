@@ -21,11 +21,15 @@
             </div>
          </div>            
          <h2>Read, learn and contribute.</h2>
+         <?php if (isLoggedIn()): ?>)
+            <a class="large button" href="<?php echo URLROOT?>/users/index">Learn.</a>
+         <?php else: ?>
          <a class="large button" href="<?php echo URLROOT?>/users/register">Join now.</a>
+         <?php endif; ?>
       </div>
    </div>
    <div class="callout large primary text-center">
-      <p>Code available at:</p>
+      <p>Code available on</p>
       <a class="link" href="https://github.com/tnebes/i-want-to-learn"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="GitHub" class="left" style="height: 10vw"></a>
    </div>
 
