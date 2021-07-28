@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 class Users extends Controller
 {
-   // NOTE: TODO: Users have been removed from the navigator. Fix this once a proper solution has been found.
    public function __construct()
    {
       $this->userModel = $this->model('User');
@@ -54,7 +53,6 @@ class Users extends Controller
       {
          // sanitise post data
          $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
          $data =
             [
                'username' => trim($_POST['username']),
@@ -78,6 +76,8 @@ class Users extends Controller
             if ($loggedInUser)
             {
                createUserSession($loggedInUser);
+               redirect('/');
+               return;
             }
             else
             {
@@ -133,7 +133,7 @@ class Users extends Controller
             $data =
                [
                   'username' => trim($_POST['username']),
-                  'email' => trim($_POST['email']),
+                  'email' => strtolower(trim($_POST['email'])),
                   'password' => trim($_POST['password']),
                   'confirmPassword' => trim($_POST['confirmPassword']),
                   'usernameError' => '',
@@ -141,7 +141,6 @@ class Users extends Controller
                   'passwordError' => '',
                   'confirmPasswordError' => '',
                ];
-
 
             // add check for whether the username is taken
             $data['usernameError'] = validateUsername($data['username']);

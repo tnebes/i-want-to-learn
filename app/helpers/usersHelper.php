@@ -49,7 +49,7 @@
       }
       elseif (strlen($password) < 7) 
       {
-         return 'Password must be at least 8 characters.';
+         return 'Password must be at least 7 characters.';
       }
       elseif (preg_match($passwordValidation, $password)) 
       {
