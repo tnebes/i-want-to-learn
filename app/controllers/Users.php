@@ -13,7 +13,6 @@ class Users extends Controller
    {
       if (!isLoggedIn())
       {
-         // TODO:
          redirect('/');
          return;
       }
@@ -33,8 +32,6 @@ class Users extends Controller
 
    public function login() : void
    {
-      // TODO: redirect the user away from this page when they are already logged in.
-      // TODO: redirect does not work after logging in.
       if (isLoggedIn())
       {
          redirect('/');
@@ -105,23 +102,22 @@ class Users extends Controller
    {
       if (!isAdmin() && isLoggedIn())
       {
-         // TODO: add a better way of redirecting the user
          redirect('/');
          return;
       }
       
       $data =
-         [
-            'Title' => 'Register page',
-            'username' => '',
-            'email' => '',
-            'password' => '',
-            'confirmPassword' => '',
-            'usernameError' => '',
-            'emailError' => '',
-            'passwordError' => '',
-            'confirmPasswordError' => '',
-         ];
+      [
+         'Title' => 'Register page',
+         'username' => '',
+         'email' => '',
+         'password' => '',
+         'confirmPassword' => '',
+         'usernameError' => '',
+         'emailError' => '',
+         'passwordError' => '',
+         'confirmPasswordError' => '',
+      ];
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') 
       {
@@ -143,7 +139,7 @@ class Users extends Controller
                ];
 
             // add check for whether the username is taken
-            $data['usernameError'] = validateUsername($data['username']);
+            $data['usernameError'] = validateUsername($data['username'], $this->userModel);
             $data['emailError'] = validateEmail($data['email'], $this->userModel);
             $data['passwordError'] = validatePassword($data['password']);
             $data['confirmPasswordError'] = validateConfirmPassword($data['confirmPassword'], $data['password']);
@@ -156,8 +152,7 @@ class Users extends Controller
                // register user
                if ($this->userModel->register($data)) 
                {
-                  header('location: ' . URLROOT . '/users/login');
-                  // TODO: check whether it is necessary to return
+                  $this->view('users/login', $data);
                   return;
                } 
                else 
@@ -189,7 +184,7 @@ class Users extends Controller
       $data = func_get_args();
       if (!$data)
       {
-         // TODO: ehh redirection
+         redirect('/');
          return;         
       }
       if (isset($data))
@@ -205,14 +200,14 @@ class Users extends Controller
    {
       if (!isAdmin())
       {
-         // TODO: redirect
+         die('You are not allowed to do that.');
          return;
       }
 
       $data = func_get_args();
       if (!$data)
       {
-         // TODO: ehh redirection
+         redirect('/');
          return;
       }
       $user = $this->userModel->getSingleUserById((int) $data[0]);
@@ -244,7 +239,6 @@ class Users extends Controller
    {
       if (!isAdmin())
       {
-         // TODO: add redirect
          die('You are not an admin.');
       }
       // gets the arguments from the APP.php call
@@ -289,7 +283,6 @@ class Users extends Controller
 
          if (isset($_POST['update']))
          {
-            //TODO: there must be a better way to do this
             $updatedUser = clone $user;
             $updatedUser->username = $data['username'];
             $updatedUser->email = $data['email'];
@@ -299,7 +292,7 @@ class Users extends Controller
             $updatedUser->banned = $data['banned'];
             $updatedUser->dateBanned = $data['dateBanned'];
 
-            $data['usernameError'] = validateUsername($updatedUser->username);
+            $data['usernameError'] = validateUsername($updatedUser->username, $this->userModel);
             $data['emailError'] = validateEmail($updatedUser->email, $this->userModel);
             $data['registrationDateError'] = validateDate($updatedUser->registrationDate);
             $data['roleError'] = validateRole($updatedUser->role);
@@ -350,7 +343,8 @@ class Users extends Controller
             $userId = (int) $user->id;
             $this->userModel->deleteUserById($userId);
             // TODO: temporary redirect until i figure out how to do it properly
-            header('location: ' . URLROOT . '/users');
+            // TODO: is this good?
+            $this->index();
             return;
          }
       }

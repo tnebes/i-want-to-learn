@@ -2,15 +2,6 @@
 
    class User
    {
-      public $id;
-      public $username;
-      public $password;
-      public $email;
-      public $registrationDate;
-      public $role;
-      public $lastLogin;
-      public $banned;
-      public $dateBanned;
       private $db;
 
       public function __construct()
@@ -80,6 +71,17 @@
       {
          $this->db->query("SELECT * FROM user WHERE email = :email");
          $this->db->bind(":email", $email);
+         if ($this->db->rowCount() > 0)
+         {
+            return true;
+         }
+         return false;
+      }
+
+      public function findUserByUsername(string $username) : bool
+      {
+         $this->db->query("SELECT * FROM user WHERE username = :username");
+         $this->db->bind(":username", $username);
          if ($this->db->rowCount() > 0)
          {
             return true;

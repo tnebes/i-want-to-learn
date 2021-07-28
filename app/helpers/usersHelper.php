@@ -4,11 +4,14 @@
     * @param $username
     * @return string for an error if exists. Empty string if no error.
     */
-   function validateUsername(string $username) : string
+   function validateUsername(string $username, $userModel) : string
    {
-      // TODO: if the username already exists...
       $nameValidation = "/^[a-zA-Z0-9]*$/";
-      if (!$username)
+      if ($userModel->findUserByUsername($username))
+      {
+         return 'Username already exists';
+      }
+      elseif (!$username)
       {
          return 'Username is required.';
       }
