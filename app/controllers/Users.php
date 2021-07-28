@@ -245,7 +245,6 @@ class Users extends Controller
       $data = func_get_args();
       if (!$data)
       {
-         // TODO: redirect
          die('Some arguments required.');
       }
       $userId = (int) $data[0];
