@@ -68,14 +68,6 @@ body
    font-size: 2vw;
 }
 
-/*TODO: using <a> in the menu-text breaks the layout. This needs to be fixed. */
-.menu-text > a:nth-child(1)
-{
-   color: #149e02;
-   /* Make the element fit within the div */
-   width: 100%;
-}
-
 .add-user-form
 {
    width: 50%;
